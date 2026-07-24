@@ -49,6 +49,9 @@
   .news{list-style:none; margin:0; padding:0}
   .news li{display:flex; gap:12px; padding:5px 0; font-size:.98rem}
   .news .date{flex:0 0 62px; color:var(--muted); font-variant-numeric:tabular-nums; font-weight:600}
+  .edu .date{flex:0 0 118px}
+  .edu .place{font-weight:600}
+  .edu .sub{color:var(--muted); font-size:.9rem}
 
   /* ---------- Publications ---------- */
   .pub{padding:12px 0; border-bottom:1px solid var(--border)}
@@ -76,7 +79,7 @@
   <!-- ==================== HEADER ==================== -->
   <header>
     <h1>Yu Qi<span class="han">祁煜</span></h1>
-    <p class="role">Northeastern University &nbsp;·&nbsp; Peking University</p>
+    <p class="role">Ph.D. Student in Computer Science, Northeastern University</p>
     <p class="contact">
       <!-- TODO: replace with your real email -->
       <a href="mailto:qi.yu@northeastern.edu">Email</a> <span class="sep">/</span>
@@ -91,17 +94,27 @@
   <!-- ==================== BIO ==================== -->
   <section id="about">
     <p class="lead">
-      Hi, I'm <b>Yu Qi</b> (祁煜), a researcher working on <b>scalable and generalizable policy
-      learning</b> for robot manipulation, at
-      <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>
-      and <a href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>.
-      <!-- TODO: e.g. "advised by Prof. XXX" / your degree & year / what you are looking for -->
+      Hi, I'm <b>Yu Qi</b> (祁煜), a Computer Science Ph.D. student at
+      <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>,
+      working on <b>scalable and generalizable policy learning</b> for robot manipulation.
+      In 2023 I received my B.S. in Computer Science from
+      <a href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>.
+      <!-- TODO: e.g. "advised by Prof. XXX" / what you are looking for -->
     </p>
     <p>My research spans robot learning and computer vision, centered on three directions:</p>
     <ul class="interests">
       <li><b>Scalable &amp; generalizable manipulation.</b> How robotic policies generalize compositionally, via bias-aware evaluation and data collection.</li>
       <li><b>Multimodal reasoning &amp; evaluation.</b> Benchmarking chain-of-thought and reasoning coherence in large multimodal and video generative models.</li>
       <li><b>Embodied capabilities of foundation models.</b> Understanding and enhancing atomic embodied abilities of multimodal LLMs.</li>
+    </ul>
+  </section>
+
+  <!-- ==================== EDUCATION ==================== -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="news edu">
+      <li><span class="date">2023 – Present</span><span><span class="place">Northeastern University</span><br><span class="sub">Ph.D. in Computer Science</span></span></li>
+      <li><span class="date">2019 – 2023</span><span><span class="place">Peking University</span><br><span class="sub">B.S. in Computer Science, School of EECS</span></span></li>
     </ul>
   </section>
 
