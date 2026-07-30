@@ -42,8 +42,9 @@
   p{margin:0 0 12px}
   .lead a{font-weight:600}
   .interests{margin:10px 0 0; padding-left:20px}
-  .interests li{margin:5px 0}
+  .interests li{margin:10px 0}
   .interests b{color:var(--fg)}
+  .interests .rel{display:block; color:var(--muted); font-size:.85rem; margin-top:2px}
 
   /* ---------- News ---------- */
   .news{list-style:none; margin:0; padding:0}
@@ -96,16 +97,28 @@
     <p class="lead">
       Hi, I'm <b>Yu Qi</b> (祁煜), a Computer Science Ph.D. student at
       <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>,
-      advised by <b>Prof. Lawson L. S. Wong</b>. My research focuses on
-      <b>scalable and generalizable policy learning</b> for robot manipulation.
-      In 2023 I received my B.S. in Computer Science from
+      advised by <b>Prof. Lawson L. S. Wong</b>. In 2023 I received my B.S. in Computer Science from
       <a href="https://www.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>.
     </p>
-    <p>My research spans robot learning and computer vision, centered on three directions:</p>
+    <p>
+      My research centers on one question: <b>how can embodied agents generalize</b> — to objects,
+      tasks, and environments they were never trained on? Rather than scaling data and models blindly,
+      I study <em>what actually drives generalization</em>, and where today's systems break down.
+      Three threads run through my work:
+    </p>
     <ul class="interests">
-      <li><b>Scalable &amp; generalizable manipulation.</b> How robotic policies generalize compositionally, via bias-aware evaluation and data collection.</li>
-      <li><b>Multimodal reasoning &amp; evaluation.</b> Benchmarking chain-of-thought and reasoning coherence in large multimodal and video generative models.</li>
-      <li><b>Embodied capabilities of foundation models.</b> Understanding and enhancing atomic embodied abilities of multimodal LLMs.</li>
+      <li><b>How does data shape generalization?</b> I build scalable data collection and evaluation
+        that expose the hidden biases limiting compositional generalization, then reallocate data to
+        close the gap.
+        <span class="rel">Scale Up Strategically · Two by Two</span></li>
+      <li><b>How do pre-trained models help — and where do they fail?</b> I diagnose and enhance the
+        embodied and reasoning abilities of foundation and video models, mapping precisely where their
+        generalization falls apart.
+        <span class="rel">BEAR · MME-CoT · MME-CoF · MME-CoF-Pro</span></li>
+      <li><b>How can we enable embodied systems to reason and act reliably?</b> I bring reasoning and
+        structural inductive biases — equivariance, object-centric skills — into manipulation for
+        sample-efficient, generalizable control.
+        <span class="rel">ThinkGrasp · EquAct · Generalizable Hierarchical Skill Learning</span></li>
     </ul>
   </section>
 
