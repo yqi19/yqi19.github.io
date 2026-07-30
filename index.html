@@ -92,8 +92,15 @@
   .edu .sub{color:var(--muted); font-size:.9rem}
 
   /* ---------- Publications ---------- */
-  .pub{padding:12px 0; border-bottom:1px solid var(--border)}
+  .pub{display:flex; gap:18px; padding:14px 0; border-bottom:1px solid var(--border)}
   .pub:last-child{border-bottom:none}
+  .thumb{position:relative; flex:0 0 172px; height:104px; border-radius:8px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    background:linear-gradient(135deg,var(--g1,#334155),var(--g2,#64748b))}
+  .thumb img,.thumb video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .thumb .tv{color:#fff; font-weight:700; font-size:.9rem; letter-spacing:.02em; text-align:center;
+    text-shadow:0 1px 6px rgba(0,0,0,.35); padding:0 6px; line-height:1.25}
+  .pub-body{flex:1 1 auto; min-width:0}
   .pub .title{font-weight:600}
   .pub .authors{color:var(--muted); font-size:.95rem}
   .pub .authors .me{color:var(--fg); font-weight:700}
@@ -108,6 +115,8 @@
   @media (max-width:560px){
     .news li{flex-direction:column; gap:0} .news .date{flex-basis:auto}
     header h1{font-size:1.8rem}
+    .pub{flex-direction:column; gap:12px}
+    .thumb{flex-basis:auto; width:100%; height:160px}
   }
 </style>
 </head>
@@ -186,94 +195,172 @@
       <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
     <div class="pub">
-      <div class="title">Scale Up Strategically: Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</div>
-      <div class="authors"><span class="me">Yu Qi</span>, Y. Zhang, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
-      <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#0f766e;--g2:#22c55e" href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">
+        <img src="assets/pubs/scaleup.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">arXiv<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Scale Up Strategically: Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</div>
+        <div class="authors"><span class="me">Yu Qi</span>, Y. Zhang, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
+        <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Pix2Act: Image-Space Manipulation Policies with Equivariant Augmentation</div>
-      <div class="authors">H. Huang, L. Zhao, H. Liu, Z. Ye, S.-Y. Huang, M. Jia, B. Hu, F. Lin, <span class="me">Yu Qi</span>, <em>et al.</em></div>
-      <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#4338ca;--g2:#6366f1" href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">
+        <img src="assets/pubs/pix2act.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">arXiv<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Pix2Act: Image-Space Manipulation Policies with Equivariant Augmentation</div>
+        <div class="authors">H. Huang, L. Zhao, H. Liu, Z. Ye, S.-Y. Huang, M. Jia, B. Hu, F. Lin, <span class="me">Yu Qi</span>, <em>et al.</em></div>
+        <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Action Map Policy: Learning 3D Closed-loop Manipulation via Pixel Classification</div>
-      <div class="authors">H. Huang, Z. Ye, L. Zhao, B. Hu, M. Jia, <span class="me">Yu Qi</span>, A. Agha, D. Wang, R. Platt, <em>et al.</em></div>
-      <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#1d4ed8;--g2:#3b82f6" href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">
+        <img src="assets/pubs/actionmap.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">arXiv<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Action Map Policy: Learning 3D Closed-loop Manipulation via Pixel Classification</div>
+        <div class="authors">H. Huang, Z. Ye, L. Zhao, B. Hu, M. Jia, <span class="me">Yu Qi</span>, A. Agha, D. Wang, R. Platt, <em>et al.</em></div>
+        <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">MME-CoF-Pro: Evaluating Reasoning Coherence in Video Generative Models with Text and Visual Hints</div>
-      <div class="authors"><span class="me">Yu Qi</span>, X. Xu, Z. Guo, S. Ma, R. Zhang, X. Chen, R. An, R. Xing, J. Zhang, H. Huang, P.-A. Heng, J. Tremblay, L. L. S. Wong</div>
-      <div class="meta"><span class="venue">ECCV 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#6d28d9;--g2:#a855f7" href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">
+        <img src="assets/pubs/mmecofpro.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">ECCV<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">MME-CoF-Pro: Evaluating Reasoning Coherence in Video Generative Models with Text and Visual Hints</div>
+        <div class="authors"><span class="me">Yu Qi</span>, X. Xu, Z. Guo, S. Ma, R. Zhang, X. Chen, R. An, R. Xing, J. Zhang, H. Huang, P.-A. Heng, J. Tremblay, L. L. S. Wong</div>
+        <div class="meta"><span class="venue">ECCV 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">EquAct: An SE(3)-Equivariant Multi-Task Transformer for 3D Robotic Manipulation</div>
-      <div class="authors">X. Zhu, <span class="me">Yu Qi</span>, Y. Zhu, R. Walters, R. Platt</div>
-      <div class="meta"><span class="venue">ICLR 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#0369a1;--g2:#38bdf8" href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">
+        <img src="assets/pubs/equact.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">ICLR<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">EquAct: An SE(3)-Equivariant Multi-Task Transformer for 3D Robotic Manipulation</div>
+        <div class="authors">X. Zhu, <span class="me">Yu Qi</span>, Y. Zhu, R. Walters, R. Platt</div>
+        <div class="meta"><span class="venue">ICLR 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Are Video Models Ready as Zero-Shot Reasoners? An Empirical Study with the MME-CoF Benchmark</div>
-      <div class="authors">Z. Guo, X. Chen, R. Zhang, R. An, <span class="me">Yu Qi</span>, D. Jiang, X. Li, M. Zhang, H. Li, <em>et al.</em></div>
-      <div class="meta"><span class="venue">CVPR 2026 (Findings)</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">arXiv</a><a href="https://video-cof.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">Code</a></span></div>
+      <a class="thumb" style="--g1:#c2410c;--g2:#f59e0b" href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">
+        <img src="assets/pubs/mmecof.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">CVPR<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Are Video Models Ready as Zero-Shot Reasoners? An Empirical Study with the MME-CoF Benchmark</div>
+        <div class="authors">Z. Guo, X. Chen, R. Zhang, R. An, <span class="me">Yu Qi</span>, D. Jiang, X. Li, M. Zhang, H. Li, <em>et al.</em></div>
+        <div class="meta"><span class="venue">CVPR 2026 (Findings)</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">arXiv</a><a href="https://video-cof.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">Code</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">BEAR: Benchmarking and Enhancing Multimodal Language Models for Atomic Embodied Capabilities</div>
-      <div class="authors"><span class="me">Yu Qi</span>, H. Zhao, Z. Guo, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
-      <div class="meta"><span class="venue">ICML 2026</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">arXiv</a><a href="https://bear-official66.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">Code</a></span></div>
+      <a class="thumb" style="--g1:#be185d;--g2:#f472b6" href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">
+        <img src="assets/pubs/bear.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">ICML<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">BEAR: Benchmarking and Enhancing Multimodal Language Models for Atomic Embodied Capabilities</div>
+        <div class="authors"><span class="me">Yu Qi</span>, H. Zhao, Z. Guo, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
+        <div class="meta"><span class="venue">ICML 2026</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">arXiv</a><a href="https://bear-official66.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">Code</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Residual Rotation Correction using Tactile Equivariance</div>
-      <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <span class="me">Yu Qi</span>, D. Wang, R. Platt</div>
-      <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#0e7490;--g2:#2dd4bf" href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">
+        <img src="assets/pubs/residual.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">RA-L<br>2025</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Residual Rotation Correction using Tactile Equivariance</div>
+        <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <span class="me">Yu Qi</span>, D. Wang, R. Platt</div>
+        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Generalizable Hierarchical Skill Learning via Object-Centric Representation</div>
-      <div class="authors">H. Zhao, <span class="me">Yu Qi</span>, B. Hu, Y. Zhu, Z. Chen, H. Tian, X. Zhu, O. Howell, H. Huang, <em>et al.</em></div>
-      <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">arXiv</a></span></div>
+      <a class="thumb" style="--g1:#15803d;--g2:#4ade80" href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">
+        <img src="assets/pubs/hierskill.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">RA-L<br>2025</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Generalizable Hierarchical Skill Learning via Object-Centric Representation</div>
+        <div class="authors">H. Zhao, <span class="me">Yu Qi</span>, B. Hu, Y. Zhu, Z. Chen, H. Tian, X. Zhu, O. Howell, H. Huang, <em>et al.</em></div>
+        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">arXiv</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">MME-CoT: Benchmarking Chain-of-Thought in Large Multimodal Models for Reasoning Quality, Robustness, and Efficiency</div>
-      <div class="authors">D. Jiang, R. Zhang, Z. Guo, Y. Li, <span class="me">Yu Qi</span>, X. Chen, L. Wang, J. Jin, C. Guo, S. Yan, <em>et al.</em></div>
-      <div class="meta"><span class="venue">ICML 2025</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">arXiv</a><a href="https://mmecot.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/CaraJ7/MME-CoT" target="_blank" rel="noopener">Code</a></span></div>
+      <a class="thumb" style="--g1:#7c3aed;--g2:#c084fc" href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">
+        <img src="assets/pubs/mmecot.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">ICML<br>2025</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">MME-CoT: Benchmarking Chain-of-Thought in Large Multimodal Models for Reasoning Quality, Robustness, and Efficiency</div>
+        <div class="authors">D. Jiang, R. Zhang, Z. Guo, Y. Li, <span class="me">Yu Qi</span>, X. Chen, L. Wang, J. Jin, C. Guo, S. Yan, <em>et al.</em></div>
+        <div class="meta"><span class="venue">ICML 2025</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">arXiv</a><a href="https://mmecot.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/CaraJ7/MME-CoT" target="_blank" rel="noopener">Code</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Two by Two: Learning Multi-Task Pairwise Objects Assembly for Generalizable Robot Manipulation</div>
-      <div class="authors"><span class="me">Yu Qi</span>, Y. Ju, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
-      <div class="meta"><span class="venue">CVPR 2025</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">Code</a></span></div>
+      <a class="thumb" style="--g1:#b45309;--g2:#f59e0b" href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">
+        <img src="assets/pubs/twobytwo.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">CVPR<br>2025</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Two by Two: Learning Multi-Task Pairwise Objects Assembly for Generalizable Robot Manipulation</div>
+        <div class="authors"><span class="me">Yu Qi</span>, Y. Ju, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
+        <div class="meta"><span class="venue">CVPR 2025</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">Code</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">ThinkGrasp: A Vision-Language System for Strategic Part Grasping in Clutter</div>
-      <div class="authors">Y. Qian, X. Zhu, O. Biza, S. Jiang, L. Zhao, H. Huang, <span class="me">Yu Qi</span>, R. Platt</div>
-      <div class="meta"><span class="venue">CoRL 2024</span> &nbsp;
-        <span class="links"><a href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">arXiv</a><a href="https://h-freax.github.io/thinkgrasp_page/" target="_blank" rel="noopener">Project</a><a href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">Code</a></span></div>
+      <a class="thumb" style="--g1:#0e7490;--g2:#22d3ee" href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">
+        <img src="assets/pubs/thinkgrasp.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">CoRL<br>2024</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">ThinkGrasp: A Vision-Language System for Strategic Part Grasping in Clutter</div>
+        <div class="authors">Y. Qian, X. Zhu, O. Biza, S. Jiang, L. Zhao, H. Huang, <span class="me">Yu Qi</span>, R. Platt</div>
+        <div class="meta"><span class="venue">CoRL 2024</span> &nbsp;
+          <span class="links"><a href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">arXiv</a><a href="https://h-freax.github.io/thinkgrasp_page/" target="_blank" rel="noopener">Project</a><a href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">Code</a></span></div>
+      </div>
     </div>
 
     <div class="pub">
-      <div class="title">Pattern4Ego: Learning Egocentric Video Representation Using Cross-video Activity Patterns</div>
-      <div class="authors">R. Wu, Y. Zhang, <span class="me">Yu Qi</span>, A. G. Chen, H. Dong</div>
-      <div class="meta"><span class="venue">ICMR 2024</span> &nbsp;
-        <span class="links"><a href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">Paper</a></span></div>
+      <a class="thumb" style="--g1:#9f1239;--g2:#fb7185" href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">
+        <img src="assets/pubs/pattern4ego.gif" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">ICMR<br>2024</span>
+      </a>
+      <div class="pub-body">
+        <div class="title">Pattern4Ego: Learning Egocentric Video Representation Using Cross-video Activity Patterns</div>
+        <div class="authors">R. Wu, Y. Zhang, <span class="me">Yu Qi</span>, A. G. Chen, H. Dong</div>
+        <div class="meta"><span class="venue">ICMR 2024</span> &nbsp;
+          <span class="links"><a href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">Paper</a></span></div>
+      </div>
     </div>
   </section>
 
