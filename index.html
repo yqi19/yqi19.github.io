@@ -42,81 +42,96 @@
   ]
 }
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg:#ffffff; --fg:#1a1a1a; --muted:#6b7178; --link:#1668c1; --link-hover:#c0392b;
-    --border:#e6e8eb; --tag:#eef2f7; --tag-fg:#3a4757;
+    --fg:#000; --muted:#666; --link:#1772d0; --link-hover:#f09228;
+    --rule:#ececec; --accent:#c20000;
   }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#0f1113; --fg:#e6e7e9; --muted:#9aa0a7; --link:#66aaff; --link-hover:#ff9166;
-      --border:#262a2f; --tag:#1b2027; --tag-fg:#aeb8c4;
-    }
-  }
+  html{color-scheme:light; -webkit-text-size-adjust:100%}
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+
   body{
-    margin:0; background:var(--bg); color:var(--fg);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
-    line-height:1.72; font-size:16.5px; -webkit-font-smoothing:antialiased;
+    margin:0; background:#fff; color:var(--fg);
+    font-family:'Roboto',Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:15px; font-weight:300; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
   }
+  strong,b{font-weight:500}
+  em,i{font-weight:300}
   a{color:var(--link); text-decoration:none}
-  a:hover{color:var(--link-hover); text-decoration:underline}
-  .wrap{max-width:720px; margin:0 auto; padding:50px 22px 90px}
+  a:hover,a:focus{color:var(--link-hover); text-decoration:none}
+
+  .wrap{max-width:800px; margin:0 auto; padding:36px 20px 40px}
+  section{margin-top:34px}
+  h2{
+    font-size:24px; font-weight:400; margin:0 0 10px; padding-bottom:6px;
+    border-bottom:1px solid var(--rule); letter-spacing:-.01em;
+  }
+  p{margin:0 0 10px}
 
   /* ---------- Header ---------- */
-  header{text-align:center; margin-bottom:14px}
-  header h1{margin:0; font-size:2.1rem; font-weight:700; letter-spacing:-.01em}
-  header h1 .han{font-weight:400; color:var(--muted); font-size:1.35rem; margin-left:6px}
-  header .role{margin:.35rem 0 0; color:var(--muted); font-size:1.02rem}
-  header .contact{margin:.85rem 0 0; font-size:.96rem; color:var(--muted)}
-  header .contact a{margin:0 2px}
-  header .contact .sep{color:var(--border)}
+  .head{display:flex; gap:34px; align-items:center}
+  .head .info{flex:1 1 auto; min-width:0}
+  .head .photo{flex:0 0 190px}
+  .head .photo img{width:190px; height:auto; display:block; border-radius:4px}
+  .name{font-size:32px; font-weight:400; margin:0; letter-spacing:-.015em}
+  .name .han{font-weight:300; color:var(--muted); font-size:22px; margin-left:6px}
+  .role{margin:2px 0 10px; color:var(--muted); font-size:15px}
+  .links{margin:12px 0 0; font-size:15px}
+  .links .sep{color:#c9c9c9; margin:0 6px}
 
-  /* ---------- Sections ---------- */
-  section{margin-top:36px}
-  h2{font-size:1.22rem; font-weight:700; margin:0 0 12px; padding-bottom:6px; border-bottom:1px solid var(--border)}
-  p{margin:0 0 12px}
-  .lead a{font-weight:600}
-  .interests{margin:10px 0 0; padding-left:20px}
-  .interests li{margin:10px 0}
-  .interests b{color:var(--fg)}
-  .interests .rel{display:block; color:var(--muted); font-size:.85rem; margin-top:2px}
+  /* ---------- Bio ---------- */
+  .threads{margin:8px 0 0; padding-left:20px}
+  .threads li{margin:6px 0}
+  .threads .rel{color:var(--muted); font-size:14px}
 
   /* ---------- News ---------- */
   .news{list-style:none; margin:0; padding:0}
-  .news li{display:flex; gap:12px; padding:5px 0; font-size:.98rem}
-  .news .date{flex:0 0 62px; color:var(--muted); font-variant-numeric:tabular-nums; font-weight:600}
-  .edu .date{flex:0 0 118px}
-  .edu .place{font-weight:600}
-  .edu .sub{color:var(--muted); font-size:.9rem}
+  .news li{padding:3px 0}
+  .news .date{display:inline-block; min-width:78px; font-weight:500}
+  .news .hl{color:var(--accent); font-weight:500}
+  .more{font-size:14px}
 
   /* ---------- Publications ---------- */
-  .pub{display:flex; gap:18px; padding:14px 0; border-bottom:1px solid var(--border)}
-  .pub:last-child{border-bottom:none}
-  .thumb{position:relative; flex:0 0 172px; height:104px; border-radius:8px; overflow:hidden;
+  .pub{display:flex; gap:20px; padding:13px 0; align-items:flex-start}
+  .thumb{
+    position:relative; flex:0 0 160px; height:120px; border-radius:4px; overflow:hidden;
     display:flex; align-items:center; justify-content:center; text-decoration:none;
-    background:linear-gradient(135deg,var(--g1,#334155),var(--g2,#64748b))}
+    background:linear-gradient(135deg,var(--g1,#334155),var(--g2,#64748b));
+  }
   .thumb img,.thumb video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .thumb .tv{color:#fff; font-weight:700; font-size:.9rem; letter-spacing:.02em; text-align:center;
-    text-shadow:0 1px 6px rgba(0,0,0,.35); padding:0 6px; line-height:1.25}
+  .thumb .tv{color:#fff; font-weight:500; font-size:14px; text-align:center; line-height:1.25;
+    text-shadow:0 1px 6px rgba(0,0,0,.35); padding:0 6px}
   .pub-body{flex:1 1 auto; min-width:0}
-  .pub .title{font-weight:600}
-  .pub .authors{color:var(--muted); font-size:.95rem}
-  .pub .authors .me{color:var(--fg); font-weight:700}
-  .pub .meta{font-size:.95rem; margin-top:1px}
-  .pub .venue{font-style:italic; color:var(--tag-fg)}
-  .pub .links a{margin-left:2px}
-  .pub .links a::before{content:"["} .pub .links a::after{content:"]"}
-  .legend{color:var(--muted); font-size:.9rem; margin:-4px 0 14px}
+  .pub .title{font-size:15px; font-weight:500}
+  .pub .title a{color:var(--link)}
+  .pub .authors{font-size:15px}
+  .pub .meta{font-size:15px}
+  .pub .venue{font-style:italic}
+  .pub .venue b{font-style:normal; font-weight:500}
+  .legend{color:var(--muted); font-size:14px; margin:-2px 0 6px}
 
-  footer{margin-top:50px; padding-top:16px; border-top:1px solid var(--border);
-    color:var(--muted); font-size:.86rem; text-align:center}
-  @media (max-width:560px){
-    .news li{flex-direction:column; gap:0} .news .date{flex-basis:auto}
-    header h1{font-size:1.8rem}
-    .pub{flex-direction:column; gap:12px}
-    .thumb{flex-basis:auto; width:100%; height:160px}
+  /* ---------- Education ---------- */
+  .edu{list-style:none; margin:0; padding:0}
+  .edu li{padding:3px 0}
+  .edu .date{display:inline-block; min-width:120px; color:var(--muted)}
+
+  footer{margin-top:36px; padding-top:12px; border-top:1px solid var(--rule);
+    color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px}
+
+  @media (max-width:640px){
+    .head{flex-direction:column-reverse; gap:16px; text-align:center}
+    .head .photo{flex-basis:auto}
+    .links .sep{margin:0 4px}
+    .pub{flex-direction:column; gap:10px}
+    .thumb{flex-basis:auto; width:100%; height:170px}
+    .news .date{min-width:0; margin-right:6px}
+    footer{flex-direction:column; text-align:center}
   }
 </style>
 </head>
@@ -124,55 +139,45 @@
 <div class="wrap">
 
   <!-- ==================== HEADER ==================== -->
-  <header>
-    <h1>Yu Qi</h1>
-    <p class="role">Ph.D. Student in Computer Science, Northeastern University</p>
-    <p class="contact">
-      <!-- TODO: replace with your real email -->
-      <a href="mailto:qi.yu2@northeastern.edu">Email</a> <span class="sep">/</span>
-      <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> <span class="sep">/</span>
-      <!-- TODO: confirm GitHub username -->
-      <a href="https://github.com/yqi19" target="_blank" rel="noopener">GitHub</a> <span class="sep">/</span>
-      <!-- TODO: put assets/cv.pdf or remove -->
-      <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
-    </p>
+  <header class="head">
+    <div class="info">
+      <h1 class="name">Yu Qi</h1>
+      <p class="role">Ph.D. Student in Computer Science, Northeastern University</p>
+      <p>
+        I am a Ph.D. student at
+        <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>,
+        advised by <b>Prof. Lawson L. S. Wong</b>. I received my B.S. in Computer Science from
+        <a href="https://english.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a> in 2023.
+      </p>
+      <p>
+        I work on <b>robotic manipulation</b>, around one question: <b>how can embodied systems
+        generalize</b> to objects, tasks, and environments they were never trained on?
+      </p>
+      <p class="links">
+        <a href="mailto:qi.yu2@northeastern.edu">Email</a><span class="sep">|</span>
+        <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><span class="sep">|</span>
+        <a href="https://github.com/yqi19" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+    <div class="photo">
+      <!-- Drop a headshot at assets/profile.jpg; this block disappears if the file is missing. -->
+      <img src="assets/profile.jpg" alt="Yu Qi" onerror="this.parentNode.remove()">
+    </div>
   </header>
 
-  <!-- ==================== BIO ==================== -->
+  <!-- ==================== RESEARCH THREADS ==================== -->
   <section id="about">
-    <p class="lead">
-      Hi, I'm <b>Yu Qi</b>, a Computer Science Ph.D. student at
-      <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>,
-      advised by <b>Prof. Lawson L. S. Wong</b>. In 2023 I received my B.S. in Computer Science from
-      <a href="https://english.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a>.
-    </p>
-    <p>
-      I work in <b>robotic manipulation</b>. My research centers on one question:
-      <b>how can embodied systems generalize</b> — to objects, tasks, and environments they were
-      never trained on? Three threads run through my work:
-    </p>
-    <ul class="interests">
-      <li><b>How does data shape generalization?</b> I build scalable data collection and evaluation
-        that expose the hidden biases limiting compositional generalization, then reallocate data to
-        close the gap.
-        <span class="rel"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">Scale Up Strategically</a> · <a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two</a></span></li>
-      <li><b>How do pre-trained models help — and where do they fail?</b> I diagnose and enhance the
-        embodied and reasoning abilities of foundation and video models, mapping precisely where their
-        generalization falls apart.
-        <span class="rel"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR</a> · <a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">MME-CoT</a> · <a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">MME-CoF</a> · <a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">MME-CoF-Pro</a></span></li>
-      <li><b>How can we enable embodied systems to reason and act reliably?</b> I bring reasoning and
-        structural inductive biases — equivariance, object-centric skills — into manipulation for
-        sample-efficient, generalizable control.
-        <span class="rel"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct</a> · <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">Generalizable Hierarchical Skill Learning</a></span></li>
-    </ul>
-  </section>
-
-  <!-- ==================== EDUCATION ==================== -->
-  <section id="education">
-    <h2>Education</h2>
-    <ul class="news edu">
-      <li><span class="date">2023 – Present</span><span><span class="place">Northeastern University</span><br><span class="sub">Ph.D. in Computer Science</span></span></li>
-      <li><span class="date">2019 – 2023</span><span><span class="place">Peking University</span><br><span class="sub">B.S. in Computer Science, School of EECS</span></span></li>
+    <h2>Research</h2>
+    <ul class="threads">
+      <li><b>How does data shape generalization?</b> Scalable data collection and evaluation that expose
+        the hidden biases limiting compositional generalization.
+        <span class="rel">(<a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">Scale Up Strategically</a>, <a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two</a>)</span></li>
+      <li><b>How do pre-trained models help — and where do they fail?</b> Diagnosing and enhancing the
+        embodied and reasoning abilities of foundation and video models.
+        <span class="rel">(<a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR</a>, <a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">MME-CoT</a>, <a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">MME-CoF</a>, <a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">MME-CoF-Pro</a>)</span></li>
+      <li><b>How can embodied systems reason and act reliably?</b> Structural inductive biases —
+        equivariance, object-centric skills — for sample-efficient, generalizable control.
+        <span class="rel">(<a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct</a>, <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">Hierarchical Skill Learning</a>)</span></li>
     </ul>
   </section>
 
@@ -180,17 +185,18 @@
   <section id="news">
     <h2>News</h2>
     <ul class="news">
-      <!-- TODO: fill in exact months / add items -->
-      <li><span class="date">2026</span><span>🎉 <b>MME-CoF-Pro</b> accepted to <b>ECCV 2026</b>.</span></li>
-      <li><span class="date">2026</span><span>🎉 Papers accepted to <b>ICLR 2026</b>, <b>CVPR 2026</b>, and <b>ICML 2026</b>.</span></li>
-      <li><span class="date">2025</span><span>🎉 Papers accepted to <b>ICML 2025</b> and <b>CVPR 2025</b>.</span></li>
+      <!-- TODO: fill in exact months -->
+      <li><span class="date">2026</span>🎉 <b>MME-CoF-Pro</b> accepted to <span class="hl">ECCV 2026</span>.</li>
+      <li><span class="date">2026</span>🎉 Papers accepted to <span class="hl">ICLR 2026</span>, <span class="hl">CVPR 2026</span>, and <span class="hl">ICML 2026</span>.</li>
+      <li><span class="date">2025</span>🎉 Papers accepted to <span class="hl">ICML 2025</span> and <span class="hl">CVPR 2025</span>.</li>
+      <li><span class="date">2023</span>Started my Ph.D. at <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>.</li>
     </ul>
   </section>
 
   <!-- ==================== PUBLICATIONS ==================== -->
   <section id="publications">
     <h2>Publications</h2>
-    <p class="legend"><span class="me" style="color:var(--fg);font-weight:700">Bold</span> = me. Full list on
+    <p class="legend"><b>Bold</b> = me. Full list on
       <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
     <div class="pub">
@@ -199,10 +205,10 @@
         <span class="tv">arXiv<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">Scale Up Strategically: Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</div>
-        <div class="authors"><span class="me">Yu Qi</span>, Z. Ye, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
-        <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">arXiv</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">Scale Up Strategically: Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</a></div>
+        <div class="authors"><b>Yu Qi</b>, Z. Ye, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
+        <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">paper</a></div>
       </div>
     </div>
 
@@ -212,10 +218,11 @@
         <span class="tv">arXiv<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">Action Map Policy: Learning 3D Closed-loop Manipulation via Pixel Classification</div>
-        <div class="authors">H. Huang, Z. Ye, L. Zhao, B. Hu, M. Jia, <span class="me">Yu Qi</span>, A. Agha, D. Wang, R. Platt, <em>et al.</em></div>
-        <div class="meta"><span class="venue">arXiv preprint, 2026</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">arXiv</a><a href="https://haojhuang.github.io/amp_page/" target="_blank" rel="noopener">Project</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">Action Map Policy: Learning 3D Closed-loop Manipulation via Pixel Classification</a></div>
+        <div class="authors">H. Huang, Z. Ye, L. Zhao, B. Hu, M. Jia, <b>Yu Qi</b>, A. Agha, D. Wang, R. Platt, <em>et al.</em></div>
+        <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">paper</a> |
+          <a href="https://haojhuang.github.io/amp_page/" target="_blank" rel="noopener">project page</a></div>
       </div>
     </div>
 
@@ -225,10 +232,11 @@
         <span class="tv">ECCV<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">MME-CoF-Pro: Evaluating Reasoning Coherence in Video Generative Models with Text and Visual Hints</div>
-        <div class="authors"><span class="me">Yu Qi</span>, X. Xu, Z. Guo, S. Ma, R. Zhang, X. Chen, R. An, R. Xing, J. Zhang, H. Huang, P.-A. Heng, J. Tremblay, L. L. S. Wong</div>
-        <div class="meta"><span class="venue">ECCV 2026</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">arXiv</a><a href="https://video-reasoning-coherence.github.io/" target="_blank" rel="noopener">Project</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">MME-CoF-Pro: Evaluating Reasoning Coherence in Video Generative Models with Text and Visual Hints</a></div>
+        <div class="authors"><b>Yu Qi</b>, X. Xu, Z. Guo, S. Ma, R. Zhang, X. Chen, R. An, R. Xing, J. Zhang, H. Huang, P.-A. Heng, J. Tremblay, L. L. S. Wong</div>
+        <div class="meta"><span class="venue">European Conference on Computer Vision (<b>ECCV</b>)</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">paper</a> |
+          <a href="https://video-reasoning-coherence.github.io/" target="_blank" rel="noopener">project page</a></div>
       </div>
     </div>
 
@@ -238,10 +246,10 @@
         <span class="tv">ICLR<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">EquAct: An SE(3)-Equivariant Multi-Task Transformer for 3D Robotic Manipulation</div>
-        <div class="authors">X. Zhu, <span class="me">Yu Qi</span>, Y. Zhu, R. Walters, R. Platt</div>
-        <div class="meta"><span class="venue">ICLR 2026</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">arXiv</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct: An SE(3)-Equivariant Multi-Task Transformer for 3D Robotic Manipulation</a></div>
+        <div class="authors">X. Zhu, <b>Yu Qi</b>, Y. Zhu, R. Walters, R. Platt</div>
+        <div class="meta"><span class="venue">International Conference on Learning Representations (<b>ICLR</b>)</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">paper</a></div>
       </div>
     </div>
 
@@ -251,10 +259,12 @@
         <span class="tv">CVPR<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">Are Video Models Ready as Zero-Shot Reasoners? An Empirical Study with the MME-CoF Benchmark</div>
-        <div class="authors">Z. Guo, X. Chen, R. Zhang, R. An, <span class="me">Yu Qi</span>, D. Jiang, X. Li, M. Zhang, H. Li, <em>et al.</em></div>
-        <div class="meta"><span class="venue">CVPR 2026 (Findings)</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">arXiv</a><a href="https://video-cof.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">Code</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">Are Video Models Ready as Zero-Shot Reasoners? An Empirical Study with the MME-CoF Benchmark</a></div>
+        <div class="authors">Z. Guo, X. Chen, R. Zhang, R. An, <b>Yu Qi</b>, D. Jiang, X. Li, M. Zhang, H. Li, <em>et al.</em></div>
+        <div class="meta"><span class="venue">Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), Findings</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">paper</a> |
+          <a href="https://video-cof.github.io/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">code</a></div>
       </div>
     </div>
 
@@ -264,10 +274,12 @@
         <span class="tv">ICML<br>2026</span>
       </a>
       <div class="pub-body">
-        <div class="title">BEAR: Benchmarking and Enhancing Multimodal Language Models for Atomic Embodied Capabilities</div>
-        <div class="authors"><span class="me">Yu Qi</span>, H. Zhao, Z. Guo, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
-        <div class="meta"><span class="venue">ICML 2026</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">arXiv</a><a href="https://bear-official66.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">Code</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR: Benchmarking and Enhancing Multimodal Language Models for Atomic Embodied Capabilities</a></div>
+        <div class="authors"><b>Yu Qi</b>, H. Zhao, Z. Guo, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
+        <div class="meta"><span class="venue">International Conference on Machine Learning (<b>ICML</b>)</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">paper</a> |
+          <a href="https://bear-official66.github.io/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">code</a></div>
       </div>
     </div>
 
@@ -277,10 +289,10 @@
         <span class="tv">RA-L<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title">Residual Rotation Correction using Tactile Equivariance</div>
-        <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <span class="me">Yu Qi</span>, D. Wang, R. Platt</div>
-        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">arXiv</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">Residual Rotation Correction using Tactile Equivariance</a></div>
+        <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <b>Yu Qi</b>, D. Wang, R. Platt</div>
+        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025 &nbsp;
+          <a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">paper</a></div>
       </div>
     </div>
 
@@ -290,10 +302,10 @@
         <span class="tv">RA-L<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title">Generalizable Hierarchical Skill Learning via Object-Centric Representation</div>
-        <div class="authors">H. Zhao, <span class="me">Yu Qi</span>, B. Hu, Y. Zhu, Z. Chen, H. Tian, X. Zhu, O. Howell, H. Huang, <em>et al.</em></div>
-        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (RA-L), 2025</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">arXiv</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">Generalizable Hierarchical Skill Learning via Object-Centric Representation</a></div>
+        <div class="authors">H. Zhao, <b>Yu Qi</b>, B. Hu, Y. Zhu, Z. Chen, H. Tian, X. Zhu, O. Howell, H. Huang, <em>et al.</em></div>
+        <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025 &nbsp;
+          <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">paper</a></div>
       </div>
     </div>
 
@@ -303,10 +315,12 @@
         <span class="tv">ICML<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title">MME-CoT: Benchmarking Chain-of-Thought in Large Multimodal Models for Reasoning Quality, Robustness, and Efficiency</div>
-        <div class="authors">D. Jiang, R. Zhang, Z. Guo, Y. Li, <span class="me">Yu Qi</span>, X. Chen, L. Wang, J. Jin, C. Guo, S. Yan, <em>et al.</em></div>
-        <div class="meta"><span class="venue">ICML 2025</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">arXiv</a><a href="https://mmecot.github.io/" target="_blank" rel="noopener">Project</a><a href="https://github.com/CaraJ7/MME-CoT" target="_blank" rel="noopener">Code</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">MME-CoT: Benchmarking Chain-of-Thought in Large Multimodal Models for Reasoning Quality, Robustness, and Efficiency</a></div>
+        <div class="authors">D. Jiang, R. Zhang, Z. Guo, Y. Li, <b>Yu Qi</b>, X. Chen, L. Wang, J. Jin, C. Guo, S. Yan, <em>et al.</em></div>
+        <div class="meta"><span class="venue">International Conference on Machine Learning (<b>ICML</b>)</span>, 2025 &nbsp;
+          <a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">paper</a> |
+          <a href="https://mmecot.github.io/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/CaraJ7/MME-CoT" target="_blank" rel="noopener">code</a></div>
       </div>
     </div>
 
@@ -316,17 +330,29 @@
         <span class="tv">CVPR<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title">Two by Two: Learning Multi-Task Pairwise Objects Assembly for Generalizable Robot Manipulation</div>
-        <div class="authors"><span class="me">Yu Qi</span>, Y. Ju, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
-        <div class="meta"><span class="venue">CVPR 2025</span> &nbsp;
-          <span class="links"><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">arXiv</a><a href="https://tea-lab.github.io/TwoByTwo/" target="_blank" rel="noopener">Project</a><a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">Code</a></span></div>
+        <div class="title"><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two: Learning Multi-Task Pairwise Objects Assembly for Generalizable Robot Manipulation</a></div>
+        <div class="authors"><b>Yu Qi</b>, Y. Ju, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
+        <div class="meta"><span class="venue">Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</span>, 2025 &nbsp;
+          <a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">paper</a> |
+          <a href="https://tea-lab.github.io/TwoByTwo/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">code</a></div>
       </div>
     </div>
 
   </section>
 
+  <!-- ==================== EDUCATION ==================== -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="edu">
+      <li><span class="date">2023 – Present</span><b>Northeastern University</b>, Ph.D. in Computer Science</li>
+      <li><span class="date">2019 – 2023</span><b>Peking University</b>, B.S. in Computer Science, School of EECS</li>
+    </ul>
+  </section>
+
   <footer>
-    Last updated: 2026 · Built with HTML + CSS, hosted on GitHub Pages
+    <span>Last updated: 2026</span>
+    <span>template adapted from <a href="https://jonbarron.info/" target="_blank" rel="noopener">this awesome website</a></span>
   </footer>
 
 </div>
