@@ -235,7 +235,7 @@
         <div class="authors"><b>Yu Qi</b>, Z. Ye, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">paper</a></div>
-        <div class="desc">Traces compositional-generalization failures back to individual instruction factors — color, verb, object, size, spatial — and turns that diagnosis into a bias-aware recipe for what data to collect next.</div>
+        <div class="desc">Traces generalization failures to individual instruction factors, and uses that to decide what data to collect next.</div>
       </div>
     </div>
 
@@ -250,7 +250,7 @@
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">paper</a> |
           <a href="https://haojhuang.github.io/amp_page/" target="_blank" rel="noopener">project page</a></div>
-        <div class="desc">Casts 3D closed-loop manipulation as pixel classification: 3D actions are projected onto camera planes as action maps, avoiding the token explosion of naive action discretization.</div>
+        <div class="desc">Casts 3D closed-loop manipulation as pixel classification over projected action maps.</div>
       </div>
     </div>
 
@@ -265,7 +265,7 @@
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">paper</a> |
           <a href="https://haojhuang.github.io/pix2act_page/" target="_blank" rel="noopener">project page</a></div>
-        <div class="desc">Learns manipulation as continuous image-space keypoint trajectories and recovers end-effector poses by triangulation, so equivariant augmentation can transform observations and actions together.</div>
+        <div class="desc">Image-space keypoint trajectories plus triangulation, so equivariant augmentation applies to observations and actions alike.</div>
       </div>
     </div>
 
@@ -279,7 +279,7 @@
         <div class="authors">Z. Qian, X. Chi, <b>Yu Qi</b>, H. Li, Z.-Y. Chen, S. Zhang</div>
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2606.17906" target="_blank" rel="noopener">paper</a></div>
-        <div class="desc">Jointly optimizes the world model and the action model through online interaction, using reconstruction rewards and video SFT so the two co-evolve beyond the demonstration distribution.</div>
+        <div class="desc">Co-trains the world model and the action model online with reconstruction rewards and video SFT.</div>
       </div>
     </div>
 
@@ -296,7 +296,7 @@
           <a href="https://video-reasoning-coherence.github.io/" target="_blank" rel="noopener">project page</a> |
           <a href="https://github.com/yqi19/MME-CoF-Pro" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/yqi19/mme-cof-pro" target="_blank" rel="noopener">🤗 dataset</a></div>
-        <div class="desc">Measures whether generated events stay causally consistent across frames: 303 samples over 16 categories, scored by a process-level Reasoning Score under no-hint, text-hint, and visual-hint settings.</div>
+        <div class="desc">Benchmarks whether generated video stays causally coherent: 303 samples, 16 categories, three hint settings.</div>
       </div>
     </div>
 
@@ -311,7 +311,7 @@
         <div class="meta"><span class="venue">International Conference on Learning Representations (<b>ICLR</b>)</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">paper</a> |
           <a href="https://github.com/ZXP-S-works/EquAct" target="_blank" rel="noopener">code</a></div>
-        <div class="desc">An SE(3)-equivariant multi-task transformer for language-conditioned 3D manipulation, theoretically guaranteed to behave consistently under scene rotations and translations.</div>
+        <div class="desc">An SE(3)-equivariant multi-task transformer for language-conditioned 3D manipulation, with guaranteed equivariance.</div>
       </div>
     </div>
 
@@ -331,7 +331,7 @@
         <div class="badges">
           <a class="badge star" href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">★ 88 GitHub stars</a>
         </div>
-        <div class="desc">Asks whether video generation models — centered on Veo-3 — work as zero-shot reasoners, characterizing their behavior across 12 dimensions of spatial, geometric, physical, temporal, and embodied logic.</div>
+        <div class="desc">Tests whether video models like Veo-3 can reason zero-shot, across 12 reasoning dimensions.</div>
       </div>
     </div>
 
@@ -348,7 +348,7 @@
           <a href="https://bear-official66.github.io/" target="_blank" rel="noopener">project page</a> |
           <a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/yqi19/BEAR-benchmark" target="_blank" rel="noopener">🤗 dataset</a></div>
-        <div class="desc">Decomposes embodied tasks into 14 atomic skills over 6 categories — 4,469 interleaved image-video-text samples — for skill-level diagnosis of 20 MLLMs, plus enhancements for the bottleneck skills.</div>
+        <div class="desc">Decomposes embodied tasks into 14 atomic skills for skill-level diagnosis of 20 MLLMs.</div>
       </div>
     </div>
 
@@ -362,7 +362,7 @@
         <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <b>Yu Qi</b>, D. Wang, R. Platt</div>
         <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">paper</a></div>
-        <div class="desc">Reconstructs surface normals from vision-based tactile RGB so in-hand rotations become rotations of the normal field, then predicts a residual rotation with an SO(2)-equivariant network.</div>
+        <div class="desc">Turns tactile RGB into surface normals so an SO(2)-equivariant network can correct in-hand rotation.</div>
       </div>
     </div>
 
@@ -377,7 +377,7 @@
         <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">paper</a> |
           <a href="https://codemasterzhao.github.io/GSL/" target="_blank" rel="noopener">project page</a></div>
-        <div class="desc">Uses object-centric skills as the interface between a high-level VLM and low-level visuomotor policies, learning in the object frame for sample-efficient, generalizable manipulation.</div>
+        <div class="desc">Object-centric skills as the interface between a high-level VLM and low-level visuomotor policies.</div>
       </div>
     </div>
 
@@ -397,7 +397,7 @@
         <div class="badges">
           <a class="badge star" href="https://github.com/MME-Benchmarks/MME-CoT" target="_blank" rel="noopener">★ 136 GitHub stars</a>
         </div>
-        <div class="desc">The first systematic study of chain-of-thought in large multimodal models across six domains, with metrics separating reasoning quality, robustness, and efficiency.</div>
+        <div class="desc">The first benchmark of chain-of-thought in multimodal models: quality, robustness, and efficiency across six domains.</div>
       </div>
     </div>
 
@@ -416,7 +416,7 @@
         <div class="badges">
           <a class="badge star" href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">★ 63 GitHub stars</a>
         </div>
-        <div class="desc">2BY2, a large-scale dataset of daily pairwise assembly — 1,034 instances, 517 object pairs, 18 tasks such as plugging into sockets and inserting bread into toasters.</div>
+        <div class="desc">2BY2: 1,034 instances of daily pairwise object assembly across 18 fine-grained tasks.</div>
       </div>
     </div>
 
@@ -436,7 +436,7 @@
         <div class="badges">
           <a class="badge star" href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">★ 119 GitHub stars</a>
         </div>
-        <div class="desc">A plug-and-play vision-language grasping system that uses GPT-4o to decide which obstructing object to clear next, progressively uncovering targets in heavy clutter.</div>
+        <div class="desc">Uses GPT-4o to pick which occluding object to clear next, uncovering targets in heavy clutter.</div>
       </div>
     </div>
 
