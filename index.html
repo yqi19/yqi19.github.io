@@ -31,7 +31,8 @@
   "email": "mailto:qi.yu2@northeastern.edu",
   "sameAs": [
     "https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en",
-    "https://github.com/yqi19"
+    "https://github.com/yqi19",
+    "https://huggingface.co/yqi19"
   ],
   "knowsAbout": [
     "Robotic Manipulation",
@@ -58,7 +59,7 @@
   body{
     margin:0; background:#fff; color:var(--fg);
     font-family:'Roboto',Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
-    font-size:15px; font-weight:300; line-height:1.62;
+    font-size:14px; font-weight:300; line-height:1.62;
     -webkit-font-smoothing:antialiased;
   }
   strong,b{font-weight:500}
@@ -66,10 +67,10 @@
   a{color:var(--link); text-decoration:none}
   a:hover,a:focus{color:var(--link-hover); text-decoration:none}
 
-  .wrap{max-width:800px; margin:0 auto; padding:36px 20px 40px}
+  .wrap{max-width:830px; margin:0 auto; padding:36px 20px 40px}
   section{margin-top:34px}
   h2{
-    font-size:24px; font-weight:400; margin:0 0 10px; padding-bottom:6px;
+    font-size:22px; font-weight:400; margin:0 0 10px; padding-bottom:6px;
     border-bottom:1px solid var(--rule); letter-spacing:-.01em;
   }
   p{margin:0 0 10px}
@@ -80,46 +81,66 @@
   .head .photo{flex:0 0 190px}
   .head .photo img{width:190px; height:auto; display:block; border-radius:4px}
   .name{font-size:32px; font-weight:400; margin:0; letter-spacing:-.015em}
-  .name .han{font-weight:300; color:var(--muted); font-size:22px; margin-left:6px}
-  .role{margin:2px 0 10px; color:var(--muted); font-size:15px}
-  .links{margin:12px 0 0; font-size:15px}
+  .name .aff{font-weight:300; color:var(--muted); font-size:20px; margin-left:8px; white-space:nowrap}
+  .role{margin:2px 0 10px; color:var(--muted); font-size:14px}
+  .links{margin:12px 0 0; font-size:14px}
   .links .sep{color:#c9c9c9; margin:0 6px}
 
   /* ---------- Bio ---------- */
   .threads{margin:8px 0 0; padding-left:20px}
   .threads li{margin:6px 0}
-  .threads .rel{color:var(--muted); font-size:14px}
+  .threads .rel{color:var(--muted); font-size:13px}
 
   /* ---------- News ---------- */
   .news{list-style:none; margin:0; padding:0}
   .news li{padding:3px 0}
   .news .date{display:inline-block; min-width:78px; font-weight:500}
   .news .hl{color:var(--accent); font-weight:500}
-  .more{font-size:14px}
+  .more{font-size:13px}
 
   /* ---------- Publications ---------- */
-  .pub{display:flex; gap:20px; padding:13px 0; align-items:flex-start}
+  .pub{display:flex; gap:20px; padding:14px 0; align-items:flex-start}
   .thumb{
-    position:relative; flex:0 0 160px; height:120px; border-radius:4px; overflow:hidden;
+    position:relative; flex:0 0 170px; height:126px; border-radius:4px; overflow:hidden;
     display:flex; align-items:center; justify-content:center; text-decoration:none;
     background:linear-gradient(135deg,var(--g1,#334155),var(--g2,#64748b));
   }
   .thumb img,.thumb video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
-  .thumb .tv{color:#fff; font-weight:500; font-size:14px; text-align:center; line-height:1.25;
+  .thumb .tv{color:#fff; font-weight:500; font-size:13px; text-align:center; line-height:1.25;
     text-shadow:0 1px 6px rgba(0,0,0,.35); padding:0 6px}
   .pub-body{flex:1 1 auto; min-width:0}
-  .pub .title{font-size:15px; font-weight:500}
+  .pub .title{font-size:14px; font-weight:700}
   .pub .title a{color:var(--link)}
-  .pub .authors{font-size:15px}
-  .pub .meta{font-size:15px}
+  .pub .authors{font-size:14px}
+  .pub .meta{font-size:14px}
   .pub .venue{font-style:italic}
   .pub .venue b{font-style:normal; font-weight:500}
-  .legend{color:var(--muted); font-size:14px; margin:-2px 0 6px}
+  .pub .desc{color:#555; font-size:13px; line-height:1.5; margin-top:3px}
+  .eq{color:var(--muted)}
+  .legend{color:var(--muted); font-size:13px; margin:-2px 0 6px}
 
-  /* ---------- Education ---------- */
+  /* selected papers, jonbarron.info-style highlight */
+  .pub.hl{background:#ffffd0; border-radius:5px; padding-left:12px; padding-right:12px; margin:0 -12px}
+
+  /* ---------- Impact badges ---------- */
+  .badges{margin-top:4px; display:flex; flex-wrap:wrap; gap:6px}
+  .badge{
+    display:inline-block; font-size:11px; font-weight:500; line-height:1.8;
+    padding:0 8px; border-radius:11px; white-space:nowrap;
+  }
+  .badge:hover{color:inherit}
+  .badge.star{background:#fff7e8; color:#b45309; border:1px solid #f6dcae}
+  .badge.cite{background:#fdecec; color:#b91c1c; border:1px solid #f5c9c9}
+  .badge.note{background:#eef2ff; color:#4338ca; border:1px solid #d5dbfa}
+  .legend .badge{margin:0 2px}
+
+  /* ---------- Lists ---------- */
   .edu{list-style:none; margin:0; padding:0}
   .edu li{padding:3px 0}
   .edu .date{display:inline-block; min-width:120px; color:var(--muted)}
+  .svc{list-style:none; margin:0; padding:0}
+  .svc li{padding:3px 0}
+  .svc .k{display:inline-block; min-width:170px; font-weight:500}
 
   footer{margin-top:36px; padding-top:12px; border-top:1px solid var(--rule);
     color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px}
@@ -127,10 +148,12 @@
   @media (max-width:640px){
     .head{flex-direction:column-reverse; gap:16px; text-align:center}
     .head .photo{flex-basis:auto}
+    .name .aff{display:block; margin:2px 0 0; font-size:18px}
     .links .sep{margin:0 4px}
     .pub{flex-direction:column; gap:10px}
     .thumb{flex-basis:auto; width:100%; height:170px}
     .news .date{min-width:0; margin-right:6px}
+    .svc .k{min-width:0; display:block}
     footer{flex-direction:column; text-align:center}
   }
 </style>
@@ -141,12 +164,12 @@
   <!-- ==================== HEADER ==================== -->
   <header class="head">
     <div class="info">
-      <h1 class="name">Yu Qi</h1>
-      <p class="role">Ph.D. Student in Computer Science, Northeastern University</p>
+      <h1 class="name">Yu Qi <span class="aff">Northeastern University</span></h1>
+      <p class="role">Ph.D. Student in Computer Science</p>
       <p>
         I am a Ph.D. student at
         <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>,
-        advised by <b>Prof. Lawson L. S. Wong</b>. I received my B.S. in Computer Science from
+        advised by Prof. Lawson L. S. Wong. I received my B.S. in Computer Science from
         <a href="https://english.pku.edu.cn/" target="_blank" rel="noopener">Peking University</a> in 2023.
       </p>
       <p>
@@ -156,7 +179,8 @@
       <p class="links">
         <a href="mailto:qi.yu2@northeastern.edu">Email</a><span class="sep">|</span>
         <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a><span class="sep">|</span>
-        <a href="https://github.com/yqi19" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/yqi19" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span>
+        <a href="https://huggingface.co/yqi19" target="_blank" rel="noopener">Hugging Face</a>
       </p>
     </div>
     <div class="photo">
@@ -187,8 +211,12 @@
     <ul class="news">
       <!-- TODO: fill in exact months -->
       <li><span class="date">2026</span>🎉 <b>MME-CoF-Pro</b> accepted to <span class="hl">ECCV 2026</span>.</li>
-      <li><span class="date">2026</span>🎉 Papers accepted to <span class="hl">ICLR 2026</span>, <span class="hl">CVPR 2026</span>, and <span class="hl">ICML 2026</span>.</li>
-      <li><span class="date">2025</span>🎉 Papers accepted to <span class="hl">ICML 2025</span> and <span class="hl">CVPR 2025</span>.</li>
+      <li><span class="date">2026</span>🎉 <b>BEAR</b> accepted to <span class="hl">ICML 2026</span>.</li>
+      <li><span class="date">2026</span>🎉 <b>MME-CoF</b> accepted to <span class="hl">CVPR 2026</span> (Findings).</li>
+      <li><span class="date">2026</span>🎉 <b>EquAct</b> accepted to <span class="hl">ICLR 2026</span>.</li>
+      <li><span class="date">2025</span>🎉 <b>EquiTac</b> and <b>GSL</b> accepted to <span class="hl">IEEE RA-L</span>.</li>
+      <li><span class="date">2025</span>🎉 <b>MME-CoT</b> accepted to <span class="hl">ICML 2025</span>; <b>Two by Two</b> accepted to <span class="hl">CVPR 2025</span>.</li>
+      <li><span class="date">2024</span>🎉 <b>ThinkGrasp</b> accepted to <span class="hl">CoRL 2024</span>; <b>Pattern4Ego</b> accepted to <span class="hl">ICMR 2024</span>.</li>
       <li><span class="date">2023</span>Started my Ph.D. at <a href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>.</li>
     </ul>
   </section>
@@ -196,10 +224,12 @@
   <!-- ==================== PUBLICATIONS ==================== -->
   <section id="publications">
     <h2>Publications</h2>
-    <p class="legend"><b>Bold</b> = me. Full list on
-      <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    <p class="legend"><b>Bold</b> = me, <span class="eq">*</span> = equal contribution. Full list on
+      <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+      <span class="badge cite">146 citations</span> and <span class="badge star">★ 136</span> mark highly cited papers
+      and widely used code releases (Google Scholar / GitHub, Aug 2026).</p>
 
-    <div class="pub">
+    <div class="pub hl">
       <a class="thumb" style="--g1:#0f766e;--g2:#22c55e" href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">
         <img src="assets/pubs/scaleup.gif?v=2" alt="" loading="lazy" onerror="this.remove()">
         <span class="tv">arXiv<br>2026</span>
@@ -209,6 +239,10 @@
         <div class="authors"><b>Yu Qi</b>, Z. Ye, X. Xu, Y. Lu, A. Sandhu, B. Hu, H. Huang, J. Tremblay, L. L. S. Wong</div>
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
           <a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">paper</a></div>
+        <div class="desc">A diagnostic framework that traces compositional-generalization failures back to individual
+          instruction factors — color, verb, object, size, spatial relation — and quantifies the shortcut with two metrics,
+          Factor Dominance Rate and Factor Dominance Hierarchy. Turns that diagnosis into a bias-aware recipe for deciding
+          which demonstrations are actually worth collecting next.</div>
       </div>
     </div>
 
@@ -223,10 +257,46 @@
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
           <a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">paper</a> |
           <a href="https://haojhuang.github.io/amp_page/" target="_blank" rel="noopener">project page</a></div>
+        <div class="desc">Casts 3D closed-loop manipulation as a classification problem in image space: 3D actions are
+          projected onto camera planes and predicted as action maps over pixels. This keeps the benefits of a classification
+          objective without the token-vocabulary explosion that naive discretization of high-dimensional continuous actions causes.</div>
       </div>
     </div>
 
     <div class="pub">
+      <a class="thumb" style="--g1:#334155;--g2:#64748b" href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">
+        <img src="assets/pubs/pix2act.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">arXiv<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title"><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">Pix2Act: Image-Space Manipulation Policies with Equivariant Augmentation</a></div>
+        <div class="authors">H. Huang, L. Zhao, H. Liu, Z. Ye, S.-Y. Huang, M. Jia, B. Hu, F. Lin, <b>Yu Qi</b>, <em>et al.</em></div>
+        <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">paper</a> |
+          <a href="https://haojhuang.github.io/pix2act_page/" target="_blank" rel="noopener">project page</a></div>
+        <div class="desc">Learns manipulation as continuous keypoint trajectories in each camera plane and recovers
+          end-effector poses losslessly by triangulation, reducing high-dimensional 3D control to a 2D prediction problem.
+          Because observations and actions live in the same coordinate space, equivariant augmentations can transform both together.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <a class="thumb" style="--g1:#475569;--g2:#94a3b8" href="https://arxiv.org/abs/2606.17906" target="_blank" rel="noopener">
+        <img src="assets/pubs/wamrl.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">arXiv<br>2026</span>
+      </a>
+      <div class="pub-body">
+        <div class="title"><a href="https://arxiv.org/abs/2606.17906" target="_blank" rel="noopener">WAM-RL: World-Action Model Reinforcement Learning with Reconstruction Rewards and Online Video SFT</a></div>
+        <div class="authors">Z. Qian, X. Chi, <b>Yu Qi</b>, H. Li, Z.-Y. Chen, S. Zhang</div>
+        <div class="meta"><span class="venue">arXiv preprint</span>, 2026 &nbsp;
+          <a href="https://arxiv.org/abs/2606.17906" target="_blank" rel="noopener">paper</a></div>
+        <div class="desc">World-action models generalize well but are stuck with whatever the expert demonstrations contain.
+          WAM-RL jointly optimizes the world model and the action model through online interaction, using reconstruction
+          rewards and online video SFT so the two components co-evolve beyond the demonstration distribution.</div>
+      </div>
+    </div>
+
+    <div class="pub hl">
       <a class="thumb" style="--g1:#6d28d9;--g2:#a855f7" href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">
         <img src="assets/pubs/mmecofpro.gif" alt="" loading="lazy" onerror="this.remove()">
         <span class="tv">ECCV<br>2026</span>
@@ -236,7 +306,12 @@
         <div class="authors"><b>Yu Qi</b>, X. Xu, Z. Guo, S. Ma, R. Zhang, X. Chen, R. An, R. Xing, J. Zhang, H. Huang, P.-A. Heng, J. Tremblay, L. L. S. Wong</div>
         <div class="meta"><span class="venue">European Conference on Computer Vision (<b>ECCV</b>)</span>, 2026 &nbsp;
           <a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">paper</a> |
-          <a href="https://video-reasoning-coherence.github.io/" target="_blank" rel="noopener">project page</a></div>
+          <a href="https://video-reasoning-coherence.github.io/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/yqi19/MME-CoF-Pro" target="_blank" rel="noopener">code</a> |
+          <a href="https://huggingface.co/datasets/yqi19/mme-cof-pro" target="_blank" rel="noopener">🤗 dataset</a></div>
+        <div class="desc">Asks whether the events a video model generates stay causally consistent across frames — a property
+          we call reasoning coherence. 303 samples across 16 categories, from visual logic to scientific reasoning, scored by a
+          process-level Reasoning Score under three settings: no hint, text hint, and visual hint.</div>
       </div>
     </div>
 
@@ -249,7 +324,15 @@
         <div class="title"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct: An SE(3)-Equivariant Multi-Task Transformer for 3D Robotic Manipulation</a></div>
         <div class="authors">X. Zhu, <b>Yu Qi</b>, Y. Zhu, R. Walters, R. Platt</div>
         <div class="meta"><span class="venue">International Conference on Learning Representations (<b>ICLR</b>)</span>, 2026 &nbsp;
-          <a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">paper</a></div>
+          <a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">paper</a> |
+          <a href="https://github.com/ZXP-S-works/EquAct" target="_blank" rel="noopener">code</a></div>
+        <div class="badges">
+          <span class="badge star">★ 25 GitHub stars</span>
+          <span class="badge cite">13 citations</span>
+        </div>
+        <div class="desc">Standard transformers give no guarantee that a policy behaves consistently when the scene is rotated
+          or translated. EquAct is an SE(3)-equivariant multi-task transformer for language-conditioned 3D manipulation that is
+          theoretically guaranteed to be equivariant, improving sample efficiency and robustness on multi-task benchmarks.</div>
       </div>
     </div>
 
@@ -264,22 +347,37 @@
         <div class="meta"><span class="venue">Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), Findings</span>, 2026 &nbsp;
           <a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">paper</a> |
           <a href="https://video-cof.github.io/" target="_blank" rel="noopener">project page</a> |
-          <a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">code</a></div>
+          <a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">code</a> |
+          <a href="https://huggingface.co/datasets/ZiyuG/MME-CoF" target="_blank" rel="noopener">🤗 dataset</a></div>
+        <div class="badges">
+          <span class="badge star">★ 88 GitHub stars</span>
+          <span class="badge cite">37 citations</span>
+        </div>
+        <div class="desc">An empirical study of whether today's video generation models — centered on Veo-3 — can serve as
+          zero-shot visual reasoners. We characterize their reasoning behavior along 12 dimensions spanning spatial, geometric,
+          physical, temporal, and embodied logic, and release MME-CoF as the benchmark distilled from that study.</div>
       </div>
     </div>
 
-    <div class="pub">
+    <div class="pub hl">
       <a class="thumb" style="--g1:#be185d;--g2:#f472b6" href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">
         <img src="assets/pubs/bear.jpg" alt="" loading="lazy" onerror="this.remove()">
         <span class="tv">ICML<br>2026</span>
       </a>
       <div class="pub-body">
         <div class="title"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR: Benchmarking and Enhancing Multimodal Language Models for Atomic Embodied Capabilities</a></div>
-        <div class="authors"><b>Yu Qi</b>, H. Zhao, Z. Guo, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
+        <div class="authors"><b>Yu Qi</b><span class="eq">*</span>, H. Zhao<span class="eq">*</span>, Z. Guo<span class="eq">*</span>, S. Ma, Z. Chen, Y. Han, R. Zhang, Z. Lin, S. Xin, <em>et al.</em></div>
         <div class="meta"><span class="venue">International Conference on Machine Learning (<b>ICML</b>)</span>, 2026 &nbsp;
           <a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">paper</a> |
           <a href="https://bear-official66.github.io/" target="_blank" rel="noopener">project page</a> |
-          <a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">code</a></div>
+          <a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">code</a> |
+          <a href="https://huggingface.co/datasets/yqi19/BEAR-benchmark" target="_blank" rel="noopener">🤗 dataset</a></div>
+        <div class="badges">
+          <span class="badge star">★ 25 GitHub stars</span>
+        </div>
+        <div class="desc">Task-level embodied benchmarks tell you that a model failed, not why. BEAR decomposes embodied tasks
+          into 14 atomic skills across 6 categories — 4,469 interleaved image-video-text samples — for hierarchical skill-level
+          diagnosis of 20 MLLMs, and uses that diagnosis to build targeted enhancements for the bottleneck skills.</div>
       </div>
     </div>
 
@@ -289,10 +387,13 @@
         <span class="tv">RA-L<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">Residual Rotation Correction using Tactile Equivariance</a></div>
+        <div class="title"><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">EquiTac: Residual Rotation Correction using Tactile Equivariance</a></div>
         <div class="authors">Y. Zhu, Z. Ye, B. Hu, H. Zhao, <b>Yu Qi</b>, D. Wang, R. Platt</div>
         <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025 &nbsp;
           <a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">paper</a></div>
+        <div class="desc">Tactile data is expensive, so sample efficiency decides whether visuotactile policies are practical.
+          EquiTac reconstructs surface normals from raw RGB of vision-based tactile sensors, making in-hand rotations correspond to
+          rotations of the normal field, then predicts a residual rotation with an SO(2)-equivariant network on top of a base policy.</div>
       </div>
     </div>
 
@@ -302,10 +403,14 @@
         <span class="tv">RA-L<br>2025</span>
       </a>
       <div class="pub-body">
-        <div class="title"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">Generalizable Hierarchical Skill Learning via Object-Centric Representation</a></div>
+        <div class="title"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">GSL: Generalizable Hierarchical Skill Learning via Object-Centric Representation</a></div>
         <div class="authors">H. Zhao, <b>Yu Qi</b>, B. Hu, Y. Zhu, Z. Chen, H. Tian, X. Zhu, O. Howell, H. Huang, <em>et al.</em></div>
         <div class="meta"><span class="venue">IEEE Robotics and Automation Letters (<b>RA-L</b>)</span>, 2025 &nbsp;
-          <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">paper</a></div>
+          <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">paper</a> |
+          <a href="https://codemasterzhao.github.io/GSL/" target="_blank" rel="noopener">project page</a></div>
+        <div class="desc">Uses object-centric skills as the interface between a high-level vision-language model and a low-level
+          visuomotor policy. Foundation models decompose demonstrations into transferable, object-canonicalized primitives, so the
+          low-level policy learns in the object frame and generalizes to new scene configurations from far fewer demonstrations.</div>
       </div>
     </div>
 
@@ -320,22 +425,75 @@
         <div class="meta"><span class="venue">International Conference on Machine Learning (<b>ICML</b>)</span>, 2025 &nbsp;
           <a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">paper</a> |
           <a href="https://mmecot.github.io/" target="_blank" rel="noopener">project page</a> |
-          <a href="https://github.com/CaraJ7/MME-CoT" target="_blank" rel="noopener">code</a></div>
+          <a href="https://github.com/MME-Benchmarks/MME-CoT" target="_blank" rel="noopener">code</a> |
+          <a href="https://huggingface.co/datasets/CaraJ/MME-CoT" target="_blank" rel="noopener">🤗 dataset</a></div>
+        <div class="badges">
+          <span class="badge cite">146 citations</span>
+          <span class="badge star">★ 136 GitHub stars</span>
+        </div>
+        <div class="desc">The first systematic study of what chain-of-thought actually does for large multimodal models,
+          spanning six domains: math, science, OCR, logic, space-time, and general scenes. Three new metrics separate reasoning
+          quality, robustness, and efficiency, revealing that CoT can hurt perception-heavy tasks even as it helps reasoning ones.</div>
       </div>
     </div>
 
-    <div class="pub">
+    <div class="pub hl">
       <a class="thumb" style="--g1:#b45309;--g2:#f59e0b" href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">
         <img src="assets/pubs/twobytwo.gif?v=3" alt="" loading="lazy" onerror="this.remove()">
         <span class="tv">CVPR<br>2025</span>
       </a>
       <div class="pub-body">
         <div class="title"><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two: Learning Multi-Task Pairwise Objects Assembly for Generalizable Robot Manipulation</a></div>
-        <div class="authors"><b>Yu Qi</b>, Y. Ju, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
+        <div class="authors"><b>Yu Qi</b><span class="eq">*</span>, Y. Ju<span class="eq">*</span>, T. Wei, C. Chu, L. L. S. Wong, H. Xu</div>
         <div class="meta"><span class="venue">Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</span>, 2025 &nbsp;
           <a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">paper</a> |
           <a href="https://tea-lab.github.io/TwoByTwo/" target="_blank" rel="noopener">project page</a> |
           <a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">code</a></div>
+        <div class="badges">
+          <span class="badge star">★ 63 GitHub stars</span>
+          <span class="badge cite">21 citations</span>
+        </div>
+        <div class="desc">Existing assembly benchmarks fit geometric fragments or factory parts, not the objects a home robot meets.
+          2BY2 is a large-scale annotated dataset of daily pairwise assembly — 1,034 instances, 517 object pairs, 18 fine-grained
+          tasks such as plugging into sockets, arranging flowers in vases, and inserting bread into toasters — with pose annotations
+          and a multi-task assembly policy trained on it.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <a class="thumb" style="--g1:#7f1d1d;--g2:#ef4444" href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">
+        <img src="assets/pubs/thinkgrasp.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <span class="tv">CoRL<br>2024</span>
+      </a>
+      <div class="pub-body">
+        <div class="title"><a href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">ThinkGrasp: A Vision-Language System for Strategic Part Grasping in Clutter</a></div>
+        <div class="authors">Y. Qian, X. Zhu, O. Biza, S. Jiang, L. Zhao, H. Huang, <b>Yu Qi</b>, R. Platt</div>
+        <div class="meta"><span class="venue">Conference on Robot Learning (<b>CoRL</b>)</span>, 2024 &nbsp;
+          <a href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">paper</a> |
+          <a href="https://h-freax.github.io/thinkgrasp_page/" target="_blank" rel="noopener">project page</a> |
+          <a href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">code</a> |
+          <a href="https://huggingface.co/datasets/FreaxRuby/Thinkgrasp" target="_blank" rel="noopener">🤗 data</a></div>
+        <div class="badges">
+          <span class="badge star">★ 119 GitHub stars</span>
+          <span class="badge cite">57 citations</span>
+        </div>
+        <div class="desc">A plug-and-play vision-language grasping system that uses GPT-4o's contextual reasoning to decide which
+          obstructing object to clear next. Goal-oriented language progressively uncovers targets that are heavily occluded or nearly
+          invisible, reaching high success rates in both simulation and the real world within a few steps.</div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <a class="thumb" style="--g1:#155e75;--g2:#67e8f9" href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">
+        <span class="tv">ICMR<br>2024</span>
+      </a>
+      <div class="pub-body">
+        <div class="title"><a href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">Pattern4Ego: Learning Egocentric Video Representation Using Cross-video Activity Patterns</a></div>
+        <div class="authors">R. Wu, Y. Zhang, <b>Yu Qi</b>, A. G. Chen, H. Dong</div>
+        <div class="meta"><span class="venue">International Conference on Multimedia Retrieval (<b>ICMR</b>)</span>, 2024 &nbsp;
+          <a href="https://dl.acm.org/doi/10.1145/3652583.3658010" target="_blank" rel="noopener">paper</a></div>
+        <div class="desc">Learns egocentric video representations by mining activity patterns that recur across different videos
+          rather than treating each clip in isolation, improving transfer on downstream egocentric understanding tasks.</div>
       </div>
     </div>
 
@@ -345,13 +503,22 @@
   <section id="education">
     <h2>Education</h2>
     <ul class="edu">
-      <li><span class="date">2023 – Present</span><b>Northeastern University</b>, Ph.D. in Computer Science</li>
+      <li><span class="date">2023 – Present</span><b>Northeastern University</b>, Ph.D. in Computer Science, advised by Prof. Lawson L. S. Wong</li>
       <li><span class="date">2019 – 2023</span><b>Peking University</b>, B.S. in Computer Science, School of EECS</li>
     </ul>
   </section>
 
+  <!-- ==================== ACADEMIC SERVICES ==================== -->
+  <section id="services">
+    <h2>Academic Services</h2>
+    <ul class="svc">
+      <li><span class="k">Workshop Organizer</span>Conference on Robot Learning (<b>CoRL</b>)</li>
+      <li><span class="k">Conference Reviewer</span>CVPR, ECCV, ICCV, ICLR, ICML, CoRL, NeurIPS, RSS, ICRA</li>
+    </ul>
+  </section>
+
   <footer>
-    <span>Last updated: 2026</span>
+    <span>Last updated: August 2026</span>
     <span>template adapted from <a href="https://jonbarron.info/" target="_blank" rel="noopener">this awesome website</a></span>
   </footer>
 
