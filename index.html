@@ -94,7 +94,7 @@
   /* ---------- News ---------- */
   .news{list-style:none; margin:0; padding:0}
   .news li{padding:3px 0}
-  .news .date{display:inline-block; min-width:78px; font-weight:500}
+  .news .date{display:inline-block; min-width:78px; padding-right:8px; font-weight:500}
   .news .hl{color:var(--accent); font-weight:500}
   .more{font-size:13px}
 
@@ -135,10 +135,10 @@
   /* ---------- Lists ---------- */
   .edu{list-style:none; margin:0; padding:0}
   .edu li{padding:3px 0}
-  .edu .date{display:inline-block; min-width:120px; color:var(--muted)}
+  .edu .date{display:inline-block; min-width:120px; padding-right:14px; color:var(--muted)}
   .svc{list-style:none; margin:0; padding:0}
   .svc li{padding:3px 0}
-  .svc .k{display:inline-block; min-width:170px; font-weight:500}
+  .svc .k{display:inline-block; min-width:170px; padding-right:14px; font-weight:500}
 
   footer{margin-top:36px; padding-top:12px; border-top:1px solid var(--rule);
     color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px}
@@ -150,7 +150,7 @@
     .links .sep{margin:0 4px}
     .pub{flex-direction:column; gap:10px}
     .thumb{flex-basis:auto; width:100%; height:170px}
-    .news .date{min-width:0; margin-right:6px}
+    .news .date{min-width:0; padding-right:6px}
     .svc .k{min-width:0; display:block}
     footer{flex-direction:column; text-align:center}
   }
@@ -186,6 +186,15 @@
       <img src="assets/profile.jpg" alt="Yu Qi" onerror="this.parentNode.remove()">
     </div>
   </header>
+
+  <!-- ==================== EDUCATION ==================== -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="edu">
+      <li><span class="date">2023 – Present</span><b>Northeastern University</b>, Ph.D. in Computer Science, advised by Prof. Lawson L. S. Wong</li>
+      <li><span class="date">2019 – 2023</span><b>Peking University</b>, B.S. in Computer Science, School of EECS</li>
+    </ul>
+  </section>
 
   <!-- ==================== RESEARCH THREADS ==================== -->
   <section id="about">
@@ -441,15 +450,6 @@
       </div>
     </div>
 
-  </section>
-
-  <!-- ==================== EDUCATION ==================== -->
-  <section id="education">
-    <h2>Education</h2>
-    <ul class="edu">
-      <li><span class="date">2023 – Present</span><b>Northeastern University</b>, Ph.D. in Computer Science, advised by Prof. Lawson L. S. Wong</li>
-      <li><span class="date">2019 – 2023</span><b>Peking University</b>, B.S. in Computer Science, School of EECS</li>
-    </ul>
   </section>
 
   <!-- ==================== ACADEMIC SERVICES ==================== -->
