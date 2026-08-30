@@ -131,9 +131,6 @@
   }
   .badge:hover{color:inherit}
   .badge.star{background:#fff7e8; color:#b45309; border:1px solid #f6dcae}
-  .badge.cite{background:#fdecec; color:#b91c1c; border:1px solid #f5c9c9}
-  .badge.note{background:#eef2ff; color:#4338ca; border:1px solid #d5dbfa}
-  .legend .badge{margin:0 2px}
 
   /* ---------- Lists ---------- */
   .edu{list-style:none; margin:0; padding:0}
@@ -273,9 +270,7 @@
         <div class="meta"><span class="venue">arXiv preprint</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">paper</a> |
           <a href="https://haojhuang.github.io/pix2act_page/" target="_blank" rel="noopener">project page</a></div>
-        <div class="desc">Learns manipulation as continuous keypoint trajectories in each camera plane and recovers
-          end-effector poses losslessly by triangulation, reducing high-dimensional 3D control to a 2D prediction problem.
-          Because observations and actions live in the same coordinate space, equivariant augmentations can transform both together.</div>
+        <div class="desc">Learns manipulation as continuous image-space keypoint trajectories and recovers end-effector poses by triangulation, so equivariant augmentation can transform observations and actions together.</div>
       </div>
     </div>
 
@@ -325,10 +320,6 @@
         <div class="meta"><span class="venue">International Conference on Learning Representations (<b>ICLR</b>)</span>, 2026</div>
         <div class="links-row"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">paper</a> |
           <a href="https://github.com/ZXP-S-works/EquAct" target="_blank" rel="noopener">code</a></div>
-        <div class="badges">
-          <span class="badge star">★ 25 GitHub stars</span>
-          <span class="badge cite">13 citations</span>
-        </div>
         <div class="desc">Standard transformers give no guarantee that a policy behaves consistently when the scene is rotated
           or translated. EquAct is an SE(3)-equivariant multi-task transformer for language-conditioned 3D manipulation that is
           theoretically guaranteed to be equivariant, improving sample efficiency and robustness on multi-task benchmarks.</div>
@@ -349,8 +340,7 @@
           <a href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/ZiyuG/MME-CoF" target="_blank" rel="noopener">🤗 dataset</a></div>
         <div class="badges">
-          <span class="badge star">★ 88 GitHub stars</span>
-          <span class="badge cite">37 citations</span>
+          <a class="badge star" href="https://github.com/ZiyuGuo99/MME-CoF" target="_blank" rel="noopener">★ 88 GitHub stars</a>
         </div>
         <div class="desc">An empirical study of whether today's video generation models — centered on Veo-3 — can serve as
           zero-shot visual reasoners. We characterize their reasoning behavior along 12 dimensions spanning spatial, geometric,
@@ -371,9 +361,6 @@
           <a href="https://bear-official66.github.io/" target="_blank" rel="noopener">project page</a> |
           <a href="https://github.com/yqi19/BEAR-official" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/yqi19/BEAR-benchmark" target="_blank" rel="noopener">🤗 dataset</a></div>
-        <div class="badges">
-          <span class="badge star">★ 25 GitHub stars</span>
-        </div>
         <div class="desc">Task-level embodied benchmarks tell you that a model failed, not why. BEAR decomposes embodied tasks
           into 14 atomic skills across 6 categories — 4,469 interleaved image-video-text samples — for hierarchical skill-level
           diagnosis of 20 MLLMs, and uses that diagnosis to build targeted enhancements for the bottleneck skills.</div>
@@ -427,8 +414,7 @@
           <a href="https://github.com/MME-Benchmarks/MME-CoT" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/CaraJ/MME-CoT" target="_blank" rel="noopener">🤗 dataset</a></div>
         <div class="badges">
-          <span class="badge cite">146 citations</span>
-          <span class="badge star">★ 136 GitHub stars</span>
+          <a class="badge star" href="https://github.com/MME-Benchmarks/MME-CoT" target="_blank" rel="noopener">★ 136 GitHub stars</a>
         </div>
         <div class="desc">The first systematic study of what chain-of-thought actually does for large multimodal models,
           spanning six domains: math, science, OCR, logic, space-time, and general scenes. Three new metrics separate reasoning
@@ -449,8 +435,7 @@
           <a href="https://tea-lab.github.io/TwoByTwo/" target="_blank" rel="noopener">project page</a> |
           <a href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">code</a></div>
         <div class="badges">
-          <span class="badge star">★ 63 GitHub stars</span>
-          <span class="badge cite">21 citations</span>
+          <a class="badge star" href="https://github.com/TEA-Lab/TwoByTwo" target="_blank" rel="noopener">★ 63 GitHub stars</a>
         </div>
         <div class="desc">Existing assembly benchmarks fit geometric fragments or factory parts, not the objects a home robot meets.
           2BY2 is a large-scale annotated dataset of daily pairwise assembly — 1,034 instances, 517 object pairs, 18 fine-grained
@@ -473,8 +458,7 @@
           <a href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">code</a> |
           <a href="https://huggingface.co/datasets/FreaxRuby/Thinkgrasp" target="_blank" rel="noopener">🤗 data</a></div>
         <div class="badges">
-          <span class="badge star">★ 119 GitHub stars</span>
-          <span class="badge cite">57 citations</span>
+          <a class="badge star" href="https://github.com/H-Freax/ThinkGrasp" target="_blank" rel="noopener">★ 119 GitHub stars</a>
         </div>
         <div class="desc">A plug-and-play vision-language grasping system that uses GPT-4o's contextual reasoning to decide which
           obstructing object to clear next. Goal-oriented language progressively uncovers targets that are heavily occluded or nearly
