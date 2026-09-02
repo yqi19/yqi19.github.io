@@ -92,7 +92,12 @@
   .threads .rel{color:var(--muted); font-size:13px}
 
   /* ---------- News ---------- */
-  .news{list-style:none; margin:0; padding:0}
+  .news{list-style:none; margin:0; padding:0 10px 0 0; max-height:215px; overflow-y:auto;
+    overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#d0d0d0 transparent}
+  .news::-webkit-scrollbar{width:6px}
+  .news::-webkit-scrollbar-track{background:transparent}
+  .news::-webkit-scrollbar-thumb{background:#d0d0d0; border-radius:3px}
+  .news::-webkit-scrollbar-thumb:hover{background:#b4b4b4}
   .news li{padding:3px 0}
   .news .date{display:inline-block; min-width:78px; padding-right:8px; font-weight:500}
   .news .hl{color:var(--accent); font-weight:500}
