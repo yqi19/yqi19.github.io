@@ -132,6 +132,9 @@
           font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; font-size:13.5px; line-height:1.6; position:relative}
   .copy{float:right; font-family:Inter,sans-serif; font-size:13px; border:1px solid var(--line); background:var(--bg);
         color:var(--ink); border-radius:8px; padding:4px 10px; cursor:pointer}
+  details.abs summary{cursor:pointer; list-style:none}
+  details.abs summary::after{content:" ▸"}
+  details.abs[open] summary::after{content:" ▾"}
   footer{color:var(--muted); font-size:13.5px; text-align:center; padding:34px 0 48px}
 </style>
 </head>
@@ -163,8 +166,8 @@
         <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4z"/></svg>arXiv</a>
       <a class="btn" href="#video">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Video</a>
-      <span class="btn soon" title="Coming soon">
-        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>Code <small>soon</small></span>
+      <a class="btn" href="https://github.com/yqi19/CoRL2026-Scale-Up-Strategically" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>Code</a>
       <a class="btn" href="https://huggingface.co/datasets/yqi19/all_factor_maniskill_hf_dataset" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 4.6 3 6.5v11C3 19.4 7 21 12 21s9-1.6 9-3.5v-11C21 4.6 17 3 12 3zm0 2c4.4 0 7 1.3 7 1.5S16.4 8 12 8 5 6.7 5 6.5 7.6 5 12 5zm7 12.5c0 .2-2.6 1.5-7 1.5s-7-1.3-7-1.5v-2.3c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3zm0-4.5c0 .2-2.6 1.5-7 1.5s-7-1.3-7-1.5v-2.3c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3z"/></svg>Data</a>
       <a class="btn ghost" href="#bibtex">BibTeX</a>
@@ -179,9 +182,6 @@
         <source src="static/video/overview.mp4?v=4" type="video/mp4">
       </video>
     </div>
-    <p class="tldr"><b>TL;DR</b> Fine-tuned robot policies latch onto some instruction factors, like color, and ignore others,
-      like the verb. We measure this <i>instruction factor bias</i> across six foundation policies, find a hierarchy they
-      largely share, and use it to decide where a fixed demonstration budget should go.</p>
   </div>
 </section>
 
@@ -189,15 +189,9 @@
   <div class="wrap narrow">
     <div class="kicker">Motivation</div>
     <h2>Scaling up, but how?</h2>
-    <p>Robots in the open world face an unlimited space of instructions. Objects, attributes, skills, and spatial relations
-      combine in ways no dataset can enumerate, so a useful policy must <b>generalize compositionally</b>: it has to execute
-      new combinations of familiar instruction factors that it never saw together during training.</p>
-    <p>Scaling up demonstrations has become the default recipe for generalization in robot learning: more data, more tasks,
-      more embodiments. Yet this line of work mostly tells us to collect <i>more</i> data, not <i>how</i> to collect it.
-      When the demonstration budget is limited, which combinations of objects, attributes, and skills should we collect?</p>
-    <p>We take a first step toward answering this question. Instead of the amount of data, we study the <b>distribution</b>
-      of demonstrations across instruction factors, and show that it determines which factors a policy learns to ground.
-      Diagnosing this bias tells us where the next demonstrations should go.</p>
+    <p>The open-world instruction space is unlimited, so robots must <b>generalize compositionally</b>.
+      Most work scales up data, but says little about <i>how</i> to scale it.</p>
+    <p>We study the <b>distribution</b> of demonstrations across instruction factors, and use it to decide where a fixed budget should go.</p>
   </div>
 </section>
 
@@ -205,18 +199,15 @@
   <div class="wrap">
     <figure style="margin-top:0">
       <img src="static/img/figure1.png" alt="Overview: instruction factors, the factor bias problem, FDR and FDH evaluation, and bias-aware data collection" loading="lazy">
-      <figcaption><b>Overview.</b> (a) We decompose language instructions into factors. (b) After fine-tuning, policies
-        overfit to some factors: trained to push the <i>red</i> cube and pick up the <i>blue</i> cube, a policy asked to push
-        the blue cube picks it up, following color instead of the verb. (c) We quantify this with the Factor Dominance Rate
-        (FDR) and the Factor Dominance Hierarchy (FDH). (d) We use the diagnosis to guide data collection.</figcaption>
+      <figcaption>(a) Instruction factors. (b) Policies shortcut to color. (c) FDR and FDH quantify the bias. (d) Bias-aware data collection.</figcaption>
     </figure>
   </div>
 </section>
 
 <section>
   <div class="wrap narrow">
-    <div class="kicker">Abstract</div>
-    <p>Compositional generalization is essential for robots to follow diverse instructions. However, pretrained policies are
+    <details class="abs"><summary class="kicker">Abstract</summary>
+<p>Compositional generalization is essential for robots to follow diverse instructions. However, pretrained policies are
       known to take shortcuts, deferring to salient cues rather than grounding language. We introduce a diagnostic framework
       that localizes this failure to individual <i>instruction factors</i>, reusable semantic components such as color, verb,
       object, size, and spatial attribute. Our framework formalizes instruction factor bias, the tendency of fine-tuned
@@ -226,6 +217,7 @@
       under-grounded; five of the six follow the ordering color ≥ object ≥ spatial ≥ verb ≥ size. We further show the
       diagnosis is actionable: a bias-aware data collection strategy that reallocates a fixed budget toward under-grounded
       factors outperforms baselines under matched demonstration budgets in simulation and on a real robot.</p>
+    </details>
   </div>
 </section>
 
@@ -235,22 +227,16 @@
     <h2>Measuring which factors a policy listens to</h2>
     <div class="cards">
       <div class="card"><div class="n">STEP 1</div><h4>Correlate two factors</h4>
-        <p>Fine-tune on data where two factors always co-occur (blue cells), e.g. each verb is paired with one object.</p></div>
+        <p>Fine-tune on data where two factors always co-occur.</p></div>
       <div class="card"><div class="n">STEP 2</div><h4>Force a choice</h4>
-        <p>Test on held-out combinations. The scene lets the policy follow either factor, but not both.</p></div>
+        <p>Test on held-out combinations that pit one factor against the other.</p></div>
       <div class="card"><div class="n">STEP 3</div><h4>Score and rank</h4>
-        <p>A VLM judge labels each rollout. FDR scores each pair; Copeland ranking aggregates pairs into the FDH.</p></div>
+        <p>A VLM judge labels rollouts; FDR scores pairs, FDH ranks factors.</p></div>
     </div>
     <figure>
       <img src="static/img/factor_correlation.png" alt="Factor correlation experiment setups" loading="lazy">
-      <figcaption><b>Factor correlation setups.</b> (a) In the (verb, object) setting, the test scene contains the target
-        object (“car”) and the object paired with the instructed verb during training (“sphere”). Grasping the sphere means
-        the policy overfit to the verb; pulling the car means it overfit to the object. (b) In the (color, object) setting,
-        the instructed object does not exist in the scene, so the policy must reveal which factor it follows.</figcaption>
+      <figcaption>Factor-correlation setups: (a) verb vs. object, (b) color vs. object.</figcaption>
     </figure>
-    <p style="font-size:15px; color:var(--muted)">With N<sub>f₁</sub> and N<sub>f₂</sub> the number of rollouts that overfit to each factor,
-      <span style="font-family:'JetBrains Mono',monospace; color:var(--ink)">FDR(f₁, f₂) = (N<sub>f₁</sub> − N<sub>f₂</sub>) / (N<sub>f₁</sub> + N<sub>f₂</sub>)</span>.
-      Positive values mean f₁ dominates, negative values mean f₂ dominates, and values near 0 mean the two are balanced.</p>
   </div>
 </section>
 
@@ -258,13 +244,11 @@
   <div class="wrap">
     <div class="kicker">Findings</div>
     <h2>Six policies, one hierarchy</h2>
-    <p>Color is the most dominant factor in every model we test, while verb and size are the most under-grounded. Five of the
-      six models share the full ordering; OpenVLA-oft deviates only in where it places spatial.</p>
+    <p>Color dominates in all six policies; verb and size are the most under-grounded.</p>
     <div class="scroll">
     <table class="fdh" id="fdh"></table>
     </div>
-    <p style="font-size:14px; color:var(--muted)">&gt; strict dominance; ≈ comparable (tie at τ = 5%). Raising τ to 10% keeps color on top and size
-      at the bottom in all six models.</p>
+    <p style="font-size:14px; color:var(--muted)">&gt; strict dominance; ≈ tie (τ = 5%).</p>
 
     <h3>Pairwise Factor Dominance Rate (%)</h3>
     <div class="scroll"><table class="fdr" id="fdr"></table></div>
@@ -280,17 +264,12 @@
     <h2>Bias-aware data collection</h2>
     <div class="grid2 wide-left">
       <div>
-        <p>The instruction space grows combinatorially with the number of factors, so covering every combination is rarely
-          affordable, especially on a real robot. We keep the demonstration budget fixed and change <i>where</i> it goes.</p>
-        <p><b>V (ours)</b> collects one column that fixes the under-grounded factor while varying the other, and adds the
-          diagonal and subdiagonal. With three or more factors, it adds a column per under-grounded factor, in FDH order.
-          We compare against <b>L</b>, which fixes each factor and samples the other uniformly, <b>Random</b>, which samples
-          combinations uniformly, and <b>Complete</b>, which covers everything and serves as an upper-bound reference.</p>
-        <p>Because the hierarchy is largely shared, V uses one global FDH for all backbones rather than re-diagnosing each model.</p>
+        <p>Keep the budget fixed; change <i>where</i> it goes.</p>
+        <p><b>V (ours)</b>: one column on the under-grounded factor, plus the diagonal and subdiagonal. Baselines: <b>L</b>, <b>Random</b>, and <b>Complete</b> (upper bound).</p>
       </div>
       <figure style="margin:0">
         <img src="static/img/data_collection_strategy.png" alt="Sampling patterns of Complete, L, V, and Random" loading="lazy" style="max-width:420px; margin:0 auto">
-        <figcaption style="text-align:center">Sampling patterns for two factors. Blue dots are collected, gray dots held out.</figcaption>
+        <figcaption style="text-align:center">Blue: collected. Gray: held out.</figcaption>
       </figure>
     </div>
   </div>
@@ -300,28 +279,16 @@
   <div class="wrap">
     <div class="kicker">Results</div>
     <h2>Simulation</h2>
-    <p>We evaluate in ManiSkill with π<sub>0</sub>, π<sub>0.5</sub>, and GR00T-N1.7. Under matched factor change and demonstration
-      budget, V matches or outperforms L and Random in the large majority of settings. The gains are largest when a strong
-      factor dominates (+10 points on Color-Object, +7 on Color-Spatial) and when three or more factors vary. The main
-      exception is Verb-Size on π<sub>0.5</sub>, where size remains hard to ground for every strategy.</p>
+    <p>ManiSkill, with π<sub>0</sub>, π<sub>0.5</sub>, and GR00T-N1.7. Under matched budgets, V matches or beats L and Random in most settings.</p>
     <figure>
       <img src="static/img/simulation_result.png" alt="Simulation results across twelve settings" loading="lazy">
-      <figcaption>Success rate under factor change <i>f</i> or demonstration budget <i>n</i>. Each checkpoint is evaluated with
-        three seeds of 200 rollouts; dots are per-seed runs and lines are means.</figcaption>
+      <figcaption>Success rate vs. factor change <i>f</i> or budget <i>n</i>; 3 seeds × 200 rollouts.</figcaption>
     </figure>
-    <p>The same global strategy also transfers to OpenVLA-oft, whose own hierarchy differs from the global one: V still
-      outperforms both baselines in the Verb-Color-Object and All-Factor settings.</p>
 
     <h2 style="margin-top:44px">Real robot</h2>
     <div>
       <div>
-        <p>On a UR5 with a RealSense D455 agent-view camera and a FLIR wrist camera, we fine-tune GR00T-N1.7 on three tasks.
-          Each task varies two instruction factors over a 4 × 4 grid of 16 instructions:</p>
-        <ul style="margin:6px 0 0; padding-left:20px">
-          <li><b>Bun</b> (color × spatial): “put the green bun into the first steamer basket on the left”</li>
-          <li><b>Pizza</b> (spatial × object): “add mustard sauce to the pizza in the top left corner”</li>
-          <li><b>Cup</b> (verb × color): “put the stirring spoon into the red cup”</li>
-        </ul>
+        <p>UR5 + GR00T-N1.7, three tasks, each a 4 × 4 grid over two factors: <b>Bun</b> (color × spatial), <b>Pizza</b> (spatial × object), <b>Cup</b> (verb × color).</p>
       </div>
     </div>
     <figure>
@@ -340,12 +307,10 @@
       <tr class="ours"><td>V (ours)</td><td>54.2% <span class="n">26/48</span></td><td>64.6% <span class="n">31/48</span></td><td>62.5% <span class="n">30/48</span></td><td>66.7% <span class="n">32/48</span></td></tr>
     </table>
     </div>
-    <p style="font-size:14px; color:var(--muted)">Success rates with GR00T-N1.7; the number in parentheses is the number of training demonstrations.</p>
+    <p style="font-size:14px; color:var(--muted)">(n) = number of training demonstrations.</p>
     <div class="grid2" style="margin-top:18px">
       <figure style="margin:0"><img src="static/img/generalization_behavior.png" alt="Per-instruction success on Bun for Random and V" loading="lazy"></figure>
-      <p><b>Where the successes land.</b> On Bun (n = 200, f = 12), brown cells are the collected combinations and numbers are
-        successful rollouts per instruction. Random scatters its budget and its successes; V concentrates collection in a
-        structured pattern and generalizes to more held-out cells.</p>
+      <p>Per-instruction successes on Bun. Brown: collected cells. V generalizes to more held-out cells than Random.</p>
     </div>
   </div>
 </section>
