@@ -60,6 +60,9 @@
        background:var(--ink); color:var(--bg); font-weight:600; font-size:15px}
   .btn:hover{text-decoration:none; opacity:.85}
   .btn svg{width:17px; height:17px; fill:currentColor}
+  .btn.soon{opacity:.45; cursor:default}
+  .btn small{font-weight:500; font-size:11px; opacity:.85}
+  .takeaway{font-size:clamp(18px,2.1vw,22px); font-weight:700; color:var(--accent); margin:22px auto 0; max-width:980px}
   .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--line)}
 
   /* ---------- sections ---------- */
@@ -141,17 +144,18 @@
     <p class="subtitle">Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</p>
     <div class="authors">
       <span><a href="https://yqi19.github.io/">Yu Qi</a><sup>1</sup></span>
-      <span>Zhang Ye<sup>1</sup></span>
+      <span><a href="https://evenjohnyz.github.io/">Zhang Ye</a><sup>1</sup></span>
       <span>Xinyi Xu<sup>1</sup></span>
       <span>Yuxuan Lu<sup>1</sup></span>
       <span>Amitoj Sandhu<sup>2</sup></span>
-      <span>Boce Hu<sup>1</sup></span>
-      <span>Haojie Huang<sup>1</sup></span>
-      <span>Jonathan Tremblay<sup>2†</sup></span>
-      <span>Lawson L.S. Wong<sup>1†</sup></span>
+      <span><a href="https://bocehu.github.io/">Boce Hu</a><sup>1</sup></span>
+      <span><a href="https://haojhuang.github.io/">Haojie Huang</a><sup>1</sup></span>
+      <span><a href="https://jtremblay.org/">Jonathan Tremblay</a><sup>2†</sup></span>
+      <span><a href="https://www.khoury.northeastern.edu/home/lsw/">Lawson L.S. Wong</a><sup>1†</sup></span>
     </div>
     <div class="affils"><span><sup>1</sup>Northeastern University</span><span><sup>2</sup>NVIDIA</span></div>
     <div class="note">† Equal advising</div>
+    <p class="takeaway">Where you spend demonstrations matters as much as how many you collect.</p>
     <div class="buttons">
       <a class="btn" href="https://arxiv.org/pdf/2607.21582" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zM14 3.5V8h4.5z"/></svg>Paper</a>
@@ -159,21 +163,38 @@
         <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4z"/></svg>arXiv</a>
       <a class="btn" href="#video">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Video</a>
+      <span class="btn soon" title="Coming soon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>Code <small>soon</small></span>
+      <span class="btn soon" title="Coming soon">
+        <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 4.6 3 6.5v11C3 19.4 7 21 12 21s9-1.6 9-3.5v-11C21 4.6 17 3 12 3zm0 2c4.4 0 7 1.3 7 1.5S16.4 8 12 8 5 6.7 5 6.5 7.6 5 12 5zm7 12.5c0 .2-2.6 1.5-7 1.5s-7-1.3-7-1.5v-2.3c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3zm0-4.5c0 .2-2.6 1.5-7 1.5s-7-1.3-7-1.5v-2.3c1.7.8 4.2 1.3 7 1.3s5.3-.5 7-1.3z"/></svg>Data <small>soon</small></span>
       <a class="btn ghost" href="#bibtex">BibTeX</a>
     </div>
   </div>
 </header>
 
-<section id="video" style="padding-top:12px">
+<section id="video" style="padding-top:8px">
   <div class="wrap narrow">
     <div class="video">
-      <video controls preload="metadata" playsinline poster="static/video/overview_poster.jpg">
-        <source src="static/video/overview.mp4" type="video/mp4">
+      <video controls preload="metadata" playsinline poster="static/video/overview_poster.jpg?v=2">
+        <source src="static/video/overview.mp4?v=2" type="video/mp4">
       </video>
     </div>
     <p class="tldr"><b>TL;DR</b> Fine-tuned robot policies latch onto some instruction factors, like color, and ignore others,
       like the verb. We measure this <i>instruction factor bias</i> across six foundation policies, find a hierarchy they
       largely share, and use it to decide where a fixed demonstration budget should go.</p>
+  </div>
+</section>
+
+<section style="padding-top:4px">
+  <div class="wrap narrow">
+    <div class="kicker">Motivation</div>
+    <h2>Scaling up, but how?</h2>
+    <p>Scaling up demonstrations has become the default recipe for generalization in robot learning: more data, more tasks,
+      more embodiments. Yet this line of work mostly tells us to collect <i>more</i> data, not <i>how</i> to collect it.
+      When the demonstration budget is limited, which combinations of objects, attributes, and skills should we collect?</p>
+    <p>We take a first step toward answering this question. Instead of the amount of data, we study the <b>distribution</b>
+      of demonstrations across instruction factors, and show that it determines which factors a policy learns to ground.
+      Diagnosing this bias tells us where the next demonstrations should go.</p>
   </div>
 </section>
 
