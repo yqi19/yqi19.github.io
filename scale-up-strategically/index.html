@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scale Up Strategically</title>
+<meta name="description" content="Scale Up Strategically: Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation. CoRL 2026.">
+<meta property="og:title" content="Scale Up Strategically (CoRL 2026)">
+<meta property="og:description" content="Diagnosing instruction factor bias in robot policies, and collecting data where it matters.">
+<meta property="og:image" content="https://yqi19.github.io/scale-up-strategically/static/img/figure1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#f6f7f9; --ink:#1c2026; --muted:#5f6670; --line:#e4e7eb;
+    --accent:#1971c2; --accent-soft:#e7f1fb; --warn:#e8590c;
+    --c-color:#2f9e44; --c-color-bg:#d3f9d8;
+    --c-object:#7048e8; --c-object-bg:#e5dbff;
+    --c-spatial:#e8590c; --c-spatial-bg:#ffe8cc;
+    --c-verb:#3b5bdb; --c-verb-bg:#dbe4ff;
+    --c-size:#0c8599; --c-size-bg:#c5f6fa;
+    --pos:#2f9e44; --neg:#c92a2a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#111418; --bg-soft:#191d23; --ink:#e6e8eb; --muted:#9aa2ad; --line:#2a2f37;
+      --accent:#5aa9f0; --accent-soft:#16263a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#111418; --bg-soft:#191d23; --ink:#e6e8eb; --muted:#9aa2ad; --line:#2a2f37;
+    --accent:#5aa9f0; --accent-soft:#16263a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--ink);
+       font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+       font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px}
+  .narrow{max-width:820px}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:72px 0 28px; text-align:center}
+  .venue{display:inline-block; font-weight:600; font-size:14px; letter-spacing:.06em; text-transform:uppercase;
+         color:var(--accent); background:var(--accent-soft); padding:5px 14px; border-radius:999px; margin-bottom:22px}
+  h1{font-size:clamp(34px,5.4vw,56px); line-height:1.08; margin:0 0 14px; font-weight:800; letter-spacing:-.02em}
+  .subtitle{font-size:clamp(18px,2.2vw,23px); color:var(--muted); font-weight:500; margin:0 auto 26px; max-width:860px; line-height:1.4}
+  .authors{font-size:18px; margin:0 auto 6px; max-width:900px}
+  .authors span{white-space:nowrap; margin:0 7px}
+  .authors sup{font-size:12px; color:var(--muted)}
+  .affils{color:var(--muted); font-size:15px; margin-bottom:4px}
+  .affils span{margin:0 10px}
+  .note{color:var(--muted); font-size:13px}
+  .buttons{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:26px}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border-radius:999px;
+       background:var(--ink); color:var(--bg); font-weight:600; font-size:15px}
+  .btn:hover{text-decoration:none; opacity:.85}
+  .btn svg{width:17px; height:17px; fill:currentColor}
+  .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--line)}
+
+  /* ---------- sections ---------- */
+  section{padding:36px 0}
+  section.soft{background:var(--bg-soft)}
+  h2{font-size:30px; margin:0 0 6px; font-weight:800; letter-spacing:-.01em}
+  .kicker{font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:4px}
+  h3{font-size:20px; margin:28px 0 6px}
+  p{margin:10px 0}
+  figure{margin:22px 0 8px}
+  figure img{width:100%; height:auto; display:block; border-radius:10px; background:#fff}
+  figcaption{font-size:14.5px; color:var(--muted); margin-top:10px; line-height:1.55}
+  .video{position:relative; border-radius:14px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.12); background:#000}
+  .video video{width:100%; display:block}
+  .tldr{font-size:19px; line-height:1.6; border-left:4px solid var(--accent); padding:4px 0 4px 18px; margin:26px 0 0}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center}
+  .grid2.wide-left{grid-template-columns:1.25fr 1fr}
+  @media (max-width:760px){ .grid2, .grid2.wide-left{grid-template-columns:1fr} }
+
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px}
+  @media (max-width:760px){ .cards{grid-template-columns:1fr} }
+  .card{background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:18px 20px}
+  .card .n{font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.08em}
+  .card h4{margin:4px 0 6px; font-size:17px}
+  .card p{margin:0; font-size:15px; color:var(--muted); line-height:1.55}
+
+  /* ---------- FDH chips ---------- */
+  .fdh{width:100%; border-collapse:collapse; margin-top:16px; font-size:15px}
+  .fdh td{padding:9px 6px; border-bottom:1px solid var(--line); vertical-align:middle}
+  .fdh td:first-child{font-weight:600; white-space:nowrap; padding-right:18px; width:1%}
+  .fdh tr.dev td:first-child{color:var(--muted)}
+  .chain{display:flex; flex-wrap:wrap; align-items:center; gap:6px}
+  .chip{display:inline-block; padding:2px 11px; border-radius:8px; font-weight:600; font-size:14px; border:1.5px solid}
+  .op{color:var(--muted); font-weight:700; width:14px; text-align:center}
+  .chip.color{color:var(--c-color); background:var(--c-color-bg); border-color:var(--c-color)}
+  .chip.object{color:var(--c-object); background:var(--c-object-bg); border-color:var(--c-object)}
+  .chip.spatial{color:var(--c-spatial); background:var(--c-spatial-bg); border-color:var(--c-spatial)}
+  .chip.verb{color:var(--c-verb); background:var(--c-verb-bg); border-color:var(--c-verb)}
+  .chip.size{color:var(--c-size); background:var(--c-size-bg); border-color:var(--c-size)}
+
+  /* ---------- FDR heatmap ---------- */
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+  table.fdr{border-collapse:separate; border-spacing:3px; font-size:14px; margin-top:14px; min-width:640px; width:100%}
+  table.fdr th{font-weight:600; font-size:13px; color:var(--muted); padding:4px 6px; text-align:center}
+  table.fdr th:first-child, table.fdr td:first-child{text-align:left; white-space:nowrap}
+  table.fdr td{padding:6px 6px; text-align:center; border-radius:6px; font-variant-numeric:tabular-nums}
+  table.fdr td:first-child{font-weight:600; background:none}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; font-size:13px; color:var(--muted); margin-top:8px}
+  .legend i{display:inline-block; width:14px; height:14px; border-radius:4px; vertical-align:-2px; margin-right:6px}
+
+  /* ---------- results table ---------- */
+  table.res{width:100%; border-collapse:collapse; font-size:15.5px; margin-top:14px; font-variant-numeric:tabular-nums}
+  table.res th{font-size:14px; color:var(--muted); font-weight:600; text-align:center; padding:8px; border-bottom:2px solid var(--line)}
+  table.res td{text-align:center; padding:9px 8px; border-bottom:1px solid var(--line)}
+  table.res th:first-child, table.res td:first-child{text-align:left}
+  table.res tr.ours td{font-weight:700; color:var(--accent); background:var(--accent-soft)}
+  table.res .n{font-weight:400; font-size:13px; color:var(--muted)}
+  table.res tr.ours .n{color:var(--accent)}
+
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:20px 0 6px}
+  @media (max-width:640px){ .stats{grid-template-columns:1fr} }
+  .stat{border:1px solid var(--line); border-radius:14px; padding:14px 18px; background:var(--bg)}
+  .stat b{display:block; font-size:30px; line-height:1.2; color:var(--accent)}
+  .stat span{font-size:14px; color:var(--muted)}
+
+  pre.bib{background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:18px 20px; overflow-x:auto;
+          font-family:"JetBrains Mono",ui-monospace,Menlo,monospace; font-size:13.5px; line-height:1.6; position:relative}
+  .copy{float:right; font-family:Inter,sans-serif; font-size:13px; border:1px solid var(--line); background:var(--bg);
+        color:var(--ink); border-radius:8px; padding:4px 10px; cursor:pointer}
+  footer{color:var(--muted); font-size:13.5px; text-align:center; padding:34px 0 48px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="venue">CoRL 2026</div>
+    <h1>Scale Up Strategically</h1>
+    <p class="subtitle">Learning Compositional Generalization via Bias-Aware Evaluation and Data Collection for Robotic Manipulation</p>
+    <div class="authors">
+      <span><a href="https://yqi19.github.io/">Yu Qi</a><sup>1</sup></span>
+      <span>Zhang Ye<sup>1</sup></span>
+      <span>Xinyi Xu<sup>1</sup></span>
+      <span>Yuxuan Lu<sup>1</sup></span>
+      <span>Amitoj Sandhu<sup>2</sup></span>
+      <span>Boce Hu<sup>1</sup></span>
+      <span>Haojie Huang<sup>1</sup></span>
+      <span>Jonathan Tremblay<sup>2†</sup></span>
+      <span>Lawson L.S. Wong<sup>1†</sup></span>
+    </div>
+    <div class="affils"><span><sup>1</sup>Northeastern University</span><span><sup>2</sup>NVIDIA</span></div>
+    <div class="note">† Equal advising</div>
+    <div class="buttons">
+      <a class="btn" href="https://arxiv.org/pdf/2607.21582" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zM14 3.5V8h4.5z"/></svg>Paper</a>
+      <a class="btn" href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h10v2H4z"/></svg>arXiv</a>
+      <a class="btn" href="#video">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Video</a>
+      <a class="btn ghost" href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</header>
+
+<section id="video" style="padding-top:12px">
+  <div class="wrap narrow">
+    <div class="video">
+      <video controls preload="metadata" playsinline poster="static/video/overview_poster.jpg">
+        <source src="static/video/overview.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="tldr"><b>TL;DR</b> Fine-tuned robot policies latch onto some instruction factors, like color, and ignore others,
+      like the verb. We measure this <i>instruction factor bias</i> across six foundation policies, find a hierarchy they
+      largely share, and use it to decide where a fixed demonstration budget should go.</p>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <figure style="margin-top:0">
+      <img src="static/img/figure1.png" alt="Overview: instruction factors, the factor bias problem, FDR and FDH evaluation, and bias-aware data collection" loading="lazy">
+      <figcaption><b>Overview.</b> (a) We decompose language instructions into factors. (b) After fine-tuning, policies
+        overfit to some factors: trained to push the <i>red</i> cube and pick up the <i>blue</i> cube, a policy asked to push
+        the blue cube picks it up, following color instead of the verb. (c) We quantify this with the Factor Dominance Rate
+        (FDR) and the Factor Dominance Hierarchy (FDH). (d) We use the diagnosis to guide data collection.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Abstract</div>
+    <p>Compositional generalization is essential for robots to follow diverse instructions. However, pretrained policies are
+      known to take shortcuts, deferring to salient cues rather than grounding language. We introduce a diagnostic framework
+      that localizes this failure to individual <i>instruction factors</i>, reusable semantic components such as color, verb,
+      object, size, and spatial attribute. Our framework formalizes instruction factor bias, the tendency of fine-tuned
+      policies to over-rely on dominant factors as shortcuts, and quantifies it through two metrics: the Factor Dominance Rate
+      (FDR), capturing pairwise bias between factors, and the Factor Dominance Hierarchy (FDH), aggregating these into a global
+      ranking. Across six foundation policies, color is the most dominant factor, and verb and size are the most
+      under-grounded; five of the six follow the ordering color ≥ object ≥ spatial ≥ verb ≥ size. We further show the
+      diagnosis is actionable: a bias-aware data collection strategy that reallocates a fixed budget toward under-grounded
+      factors outperforms baselines under matched demonstration budgets in simulation and on a real robot.</p>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="kicker">Evaluation</div>
+    <h2>Measuring which factors a policy listens to</h2>
+    <div class="cards">
+      <div class="card"><div class="n">STEP 1</div><h4>Correlate two factors</h4>
+        <p>Fine-tune on data where two factors always co-occur (blue cells), e.g. each verb is paired with one object.</p></div>
+      <div class="card"><div class="n">STEP 2</div><h4>Force a choice</h4>
+        <p>Test on held-out combinations. The scene lets the policy follow either factor, but not both.</p></div>
+      <div class="card"><div class="n">STEP 3</div><h4>Score and rank</h4>
+        <p>A VLM judge labels each rollout. FDR scores each pair; Copeland ranking aggregates pairs into the FDH.</p></div>
+    </div>
+    <figure>
+      <img src="static/img/factor_correlation.png" alt="Factor correlation experiment setups" loading="lazy">
+      <figcaption><b>Factor correlation setups.</b> (a) In the (verb, object) setting, the test scene contains the target
+        object (“car”) and the object paired with the instructed verb during training (“sphere”). Grasping the sphere means
+        the policy overfit to the verb; pulling the car means it overfit to the object. (b) In the (color, object) setting,
+        the instructed object does not exist in the scene, so the policy must reveal which factor it follows.</figcaption>
+    </figure>
+    <p style="font-size:15px; color:var(--muted)">With N<sub>f₁</sub> and N<sub>f₂</sub> the number of rollouts that overfit to each factor,
+      <span style="font-family:'JetBrains Mono',monospace; color:var(--ink)">FDR(f₁, f₂) = (N<sub>f₁</sub> − N<sub>f₂</sub>) / (N<sub>f₁</sub> + N<sub>f₂</sub>)</span>.
+      Positive values mean f₁ dominates, negative values mean f₂ dominates, and values near 0 mean the two are balanced.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Findings</div>
+    <h2>Six policies, one hierarchy</h2>
+    <p>Color is the most dominant factor in every model we test, while verb and size are the most under-grounded. Five of the
+      six models share the full ordering; OpenVLA-oft deviates only in where it places spatial.</p>
+    <div class="scroll">
+    <table class="fdh" id="fdh"></table>
+    </div>
+    <p style="font-size:14px; color:var(--muted)">&gt; strict dominance; ≈ comparable (tie at τ = 5%). Raising τ to 10% keeps color on top and size
+      at the bottom in all six models.</p>
+
+    <h3>Pairwise Factor Dominance Rate (%)</h3>
+    <div class="scroll"><table class="fdr" id="fdr"></table></div>
+    <div class="legend"><span><i style="background:rgba(47,158,68,.55)"></i>first factor dominates</span>
+      <span><i style="background:rgba(201,42,42,.5)"></i>second factor dominates</span>
+      <span>300 training demonstrations and 400 evaluation rollouts per score</span></div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="kicker">Method</div>
+    <h2>Bias-aware data collection</h2>
+    <div class="grid2 wide-left">
+      <div>
+        <p>The instruction space grows combinatorially with the number of factors, so covering every combination is rarely
+          affordable, especially on a real robot. We keep the demonstration budget fixed and change <i>where</i> it goes.</p>
+        <p><b>V (ours)</b> collects one column that fixes the under-grounded factor while varying the other, and adds the
+          diagonal and subdiagonal. With three or more factors, it adds a column per under-grounded factor, in FDH order.
+          We compare against <b>L</b>, which fixes each factor and samples the other uniformly, <b>Random</b>, which samples
+          combinations uniformly, and <b>Complete</b>, which covers everything and serves as an upper-bound reference.</p>
+        <p>Because the hierarchy is largely shared, V uses one global FDH for all backbones rather than re-diagnosing each model.</p>
+      </div>
+      <figure style="margin:0">
+        <img src="static/img/data_collection_strategy.png" alt="Sampling patterns of Complete, L, V, and Random" loading="lazy" style="max-width:420px; margin:0 auto">
+        <figcaption style="text-align:center">Sampling patterns for two factors. Blue dots are collected, gray dots held out.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Results</div>
+    <h2>Simulation</h2>
+    <p>We evaluate in ManiSkill with π<sub>0</sub>, π<sub>0.5</sub>, and GR00T-N1.7. Under matched factor change and demonstration
+      budget, V matches or outperforms L and Random in the large majority of settings. The gains are largest when a strong
+      factor dominates (+10 points on Color-Object, +7 on Color-Spatial) and when three or more factors vary. The main
+      exception is Verb-Size on π<sub>0.5</sub>, where size remains hard to ground for every strategy.</p>
+    <figure>
+      <img src="static/img/simulation_result.png" alt="Simulation results across twelve settings" loading="lazy">
+      <figcaption>Success rate under factor change <i>f</i> or demonstration budget <i>n</i>. Each checkpoint is evaluated with
+        three seeds of 200 rollouts; dots are per-seed runs and lines are means.</figcaption>
+    </figure>
+    <p>The same global strategy also transfers to OpenVLA-oft, whose own hierarchy differs from the global one: V still
+      outperforms both baselines in the Verb-Color-Object and All-Factor settings.</p>
+
+    <h2 style="margin-top:44px">Real robot</h2>
+    <div>
+      <div>
+        <p>On a UR5 with a RealSense D455 agent-view camera and a FLIR wrist camera, we fine-tune GR00T-N1.7 on three tasks.
+          Each task varies two instruction factors over a 4 × 4 grid of 16 instructions:</p>
+        <ul style="margin:6px 0 0; padding-left:20px">
+          <li><b>Bun</b> (color × spatial): “put the green bun into the first steamer basket on the left”</li>
+          <li><b>Pizza</b> (spatial × object): “add mustard sauce to the pizza in the top left corner”</li>
+          <li><b>Cup</b> (verb × color): “put the stirring spoon into the red cup”</li>
+        </ul>
+      </div>
+    </div>
+    <figure>
+      <img src="static/img/real_robot_experiment.jpg" alt="Real-robot tasks: Bun, Pizza, and Cup" loading="lazy">
+    </figure>
+    <div class="stats">
+      <div class="stat"><b>+28.7</b><span>points over L, averaged over four settings</span></div>
+      <div class="stat"><b>4 / 4</b><span>settings where V beats both baselines</span></div>
+      <div class="stat"><b>16.7</b><span>points over the best baseline on Bun, at both budgets</span></div>
+    </div>
+    <div class="scroll">
+    <table class="res">
+      <tr><th>Method</th><th>Bun (100)</th><th>Bun (200)</th><th>Pizza (100)</th><th>Cup (100)</th></tr>
+      <tr><td>L</td><td>22.9% <span class="n">11/48</span></td><td>37.5% <span class="n">18/48</span></td><td>35.4% <span class="n">17/48</span></td><td>37.5% <span class="n">18/48</span></td></tr>
+      <tr><td>Random</td><td>37.5% <span class="n">18/48</span></td><td>47.9% <span class="n">23/48</span></td><td>50.0% <span class="n">24/48</span></td><td>47.9% <span class="n">23/48</span></td></tr>
+      <tr class="ours"><td>V (ours)</td><td>54.2% <span class="n">26/48</span></td><td>64.6% <span class="n">31/48</span></td><td>62.5% <span class="n">30/48</span></td><td>66.7% <span class="n">32/48</span></td></tr>
+    </table>
+    </div>
+    <p style="font-size:14px; color:var(--muted)">Success rates with GR00T-N1.7; the number in parentheses is the number of training demonstrations.</p>
+    <div class="grid2" style="margin-top:18px">
+      <figure style="margin:0"><img src="static/img/generalization_behavior.png" alt="Per-instruction success on Bun for Random and V" loading="lazy"></figure>
+      <p><b>Where the successes land.</b> On Bun (n = 200, f = 12), brown cells are the collected combinations and numbers are
+        successful rollouts per instruction. Random scatters its budget and its successes; V concentrates collection in a
+        structured pattern and generalizes to more held-out cells.</p>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="bibtex">
+  <div class="wrap narrow">
+    <div class="kicker">Citation</div>
+    <h2>BibTeX</h2>
+<pre class="bib"><button class="copy" onclick="copyBib(this)">Copy</button><code id="bib">@inproceedings{qi2026scaleup,
+  title     = {Scale Up Strategically: Learning Compositional Generalization via
+               Bias-Aware Evaluation and Data Collection for Robotic Manipulation},
+  author    = {Qi, Yu and Ye, Zhang and Xu, Xinyi and Lu, Yuxuan and Sandhu, Amitoj and
+               Hu, Boce and Huang, Haojie and Tremblay, Jonathan and Wong, Lawson L.S.},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year      = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Northeastern University · NVIDIA · CoRL 2026</div>
+</footer>
+
+<script>
+  // FDH rows
+  const FDH = [
+    ["π<sub>0.5</sub>", "color > object ≈ spatial > verb > size"],
+    ["π<sub>0</sub>", "color > object > spatial ≈ verb > size"],
+    ["OpenVLA-oft", "color > object ≈ verb ≈ size > spatial", true],
+    ["GR00T-N1.7", "color > object > spatial > verb > size"],
+    ["XVLA", "color ≈ object > spatial > verb > size"],
+    ["Genie-Envisioner", "color > object > spatial > verb > size"],
+  ];
+  document.getElementById("fdh").innerHTML = FDH.map(([m, s, dev]) =>
+    `<tr class="${dev ? "dev" : ""}"><td>${m}</td><td><div class="chain">` +
+    s.split(" ").map(t => /[>≈]/.test(t) ? `<span class="op">${t}</span>` : `<span class="chip ${t}">${t}</span>`).join("") +
+    `</div></td></tr>`).join("");
+
+  // FDR heatmap (Table 1)
+  const models = ["π<sub>0.5</sub>", "π<sub>0</sub>", "OpenVLA-oft", "GR00T-N1.7", "XVLA", "Genie-Env."];
+  const FDR = [
+    ["(verb, color)", -4.0, -6.0, -6.2, -6.8, -1.0, -22.0],
+    ["(verb, object)", -9.2, -16.7, 16.0, -25.3, -19.0, -25.0],
+    ["(verb, size)", 26.3, 41.3, 4.5, 25.1, 38.0, 32.6],
+    ["(verb, spatial)", -7.4, -2.1, 4.5, -12.2, -5.0, -14.2],
+    ["(color, object)", 57.3, 42.1, 17.5, 22.8, 31.0, 22.2],
+    ["(color, size)", 54.0, 52.4, 33.6, 52.4, 56.0, 30.9],
+    ["(color, spatial)", 38.6, 32.6, 39.5, 8.4, 19.0, 36.5],
+    ["(object, size)", 22.0, 31.2, 1.6, 52.4, 29.0, 11.4],
+    ["(object, spatial)", -3.8, -2.9, 17.0, 9.5, 9.0, 20.9],
+    ["(size, spatial)", -7.9, -13.0, 19.8, -11.0, -32.0, -23.7],
+  ];
+  const cell = v => {
+    const a = Math.min(Math.abs(v) / 60, 1) * 0.6 + 0.05;
+    const bg = v >= 0 ? `rgba(47,158,68,${a})` : `rgba(201,42,42,${a})`;
+    return `<td style="background:${bg}">${v.toFixed(1)}</td>`;
+  };
+  document.getElementById("fdr").innerHTML =
+    `<tr><th>Factor pair</th>${models.map(m => `<th>${m}</th>`).join("")}</tr>` +
+    FDR.map(r => `<tr><td>${r[0]}</td>${r.slice(1).map(cell).join("")}</tr>`).join("");
+
+  function copyBib(btn){
+    const t = document.getElementById("bib").innerText;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
+      () => { btn.textContent = "Copied"; setTimeout(() => btn.textContent = "Copy", 1500); },
+      () => { btn.textContent = "Select & copy"; });
+  }
+</script>
+</body>
+</html>
