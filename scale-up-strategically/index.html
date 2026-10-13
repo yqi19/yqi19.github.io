@@ -145,8 +145,8 @@
     <div class="authors">
       <span><a href="https://yqi19.github.io/">Yu Qi</a><sup>1</sup></span>
       <span><a href="https://evenjohnyz.github.io/">Zhang Ye</a><sup>1</sup></span>
-      <span>Xinyi Xu<sup>1</sup></span>
-      <span>Yuxuan Lu<sup>1</sup></span>
+      <span><a href="https://xinyixu-0214.github.io/">Xinyi Xu</a><sup>1</sup></span>
+      <span><a href="https://yuxuan.lu/">Yuxuan Lu</a><sup>1</sup></span>
       <span>Amitoj Sandhu<sup>2</sup></span>
       <span><a href="https://bocehu.github.io/">Boce Hu</a><sup>1</sup></span>
       <span><a href="https://haojhuang.github.io/">Haojie Huang</a><sup>1</sup></span>
@@ -175,8 +175,8 @@
 <section id="video" style="padding-top:8px">
   <div class="wrap narrow">
     <div class="video">
-      <video controls preload="metadata" playsinline poster="static/video/overview_poster.jpg?v=2">
-        <source src="static/video/overview.mp4?v=2" type="video/mp4">
+      <video controls preload="metadata" playsinline poster="static/video/overview_poster.jpg?v=3">
+        <source src="static/video/overview.mp4?v=3" type="video/mp4">
       </video>
     </div>
     <p class="tldr"><b>TL;DR</b> Fine-tuned robot policies latch onto some instruction factors, like color, and ignore others,
@@ -189,6 +189,9 @@
   <div class="wrap narrow">
     <div class="kicker">Motivation</div>
     <h2>Scaling up, but how?</h2>
+    <p>Robots in the open world face an unlimited space of instructions. Objects, attributes, skills, and spatial relations
+      combine in ways no dataset can enumerate, so a useful policy must <b>generalize compositionally</b>: it has to execute
+      new combinations of familiar instruction factors that it never saw together during training.</p>
     <p>Scaling up demonstrations has become the default recipe for generalization in robot learning: more data, more tasks,
       more embodiments. Yet this line of work mostly tells us to collect <i>more</i> data, not <i>how</i> to collect it.
       When the demonstration budget is limited, which combinations of objects, attributes, and skills should we collect?</p>
