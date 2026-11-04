@@ -4,6 +4,7 @@ Recommended size: ~344x208 (or any 1.65:1 image). If a file is missing, the page
 just shows a colored box with the venue name — nothing breaks.
 
 Expected filenames:
+  robojudge.gif     RoboJudge
   scaleup.gif       Scale Up Strategically
   pix2act.gif       Pix2Act
   actionmap.gif     Action Map Policy
