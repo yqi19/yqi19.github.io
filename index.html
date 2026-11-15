@@ -93,6 +93,24 @@
   .threads li{margin:6px 0}
   .threads .rel{color:var(--muted); font-size:13px}
 
+  /* ---------- Research pillars (Jiayuan Mao-style) ---------- */
+  .pillar{margin:14px 0 0; padding:12px 16px 12px; border-left:4px solid var(--c); background:#fafafa; border-radius:0 6px 6px 0}
+  .pillar-title{font-size:16px; font-weight:500; color:var(--c)}
+  .qs{margin:6px 0 4px; padding-left:20px; font-style:italic}
+  .qs li{margin:3px 0}
+  .pillar details{margin:4px 0 0}
+  .pillar summary{cursor:pointer; color:var(--link); font-size:13px; list-style:none; display:inline-block}
+  .pillar summary::-webkit-details-marker{display:none}
+  .pillar summary::before{content:"\25B8 "}
+  .pillar details[open] summary::before{content:"\25BE "}
+  .pillar summary .hide,.pillar details[open] summary .show{display:none}
+  .pillar details[open] summary .hide{display:inline}
+  .area{display:flex; gap:12px; margin:8px 0 0; font-size:13px}
+  .area-name{flex:0 0 220px; font-weight:500}
+  .area-papers a+a::before{content:" · "; color:#bbb}
+  .tags{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px}
+  .tags span{font-size:12px; padding:1px 10px; border-radius:11px; color:var(--c); border:1px solid var(--c); background:#fff}
+
   /* ---------- News ---------- */
   .news{list-style:none; margin:0; padding:0 10px 0 0; max-height:215px; overflow-y:auto;
     overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#d0d0d0 transparent}
@@ -156,6 +174,8 @@
     .thumb{flex-basis:auto; width:100%; height:170px}
     .news .date{min-width:0; padding-right:6px}
     .svc .k{min-width:0; display:block}
+    .area{flex-direction:column; gap:2px}
+    .area-name{flex-basis:auto}
     footer{flex-direction:column; text-align:center}
   }
 </style>
@@ -182,27 +202,45 @@
       </p>
     </div>
     <div class="photo">
-      <!-- Drop a headshot at assets/profile.jpg; this block disappears if the file is missing. -->
-      <img src="assets/profile.jpg" alt="Yu Qi" onerror="this.parentNode.remove()">
+            <img src="assets/profile.jpg" alt="Yu Qi" onerror="this.parentNode.remove()">
     </div>
   </header>
 
-  <!-- ==================== RESEARCH THREADS ==================== -->
+  <!-- ==================== RESEARCH ==================== -->
   <section id="about">
     <h2>Research</h2>
-    <p>My research focuses on the <b>post-training</b> — SFT and RL — of robot policy models.
-      More specifically, I am interested in the following questions:</p>
-    <ul class="threads">
-      <li><b>How does post-training data shape generalization?</b> Scalable post-training data collection
-        and bias-aware evaluation that expose the hidden biases limiting compositional generalization.
-        <span class="rel">(<a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">Scale Up Strategically</a>, <a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two</a>)</span></li>
-      <li><b>How do pre-trained models help — and where do they fail?</b> Diagnosing and enhancing the
-        embodied and reasoning abilities of foundation and video models.
-        <span class="rel">(<a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR</a>, <a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">MME-CoT</a>, <a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">MME-CoF</a>, <a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">MME-CoF-Pro</a>)</span></li>
-      <li><b>How can embodied systems reason and act reliably?</b> Structural inductive biases —
-        equivariance, object-centric skills — for sample-efficient, generalizable control.
-        <span class="rel">(<a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct</a>, <a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">Hierarchical Skill Learning</a>)</span></li>
-    </ul>
+    <p>My research focuses on <b>efficient scaling</b> of robot learning: what kind of data we need, and how to
+      use it so that policies generalize better. This includes <b>post-training</b>, <b>policy adaptation</b>,
+      and <b>skill learning</b>.</p>
+
+    <div class="pillar" style="--c:#0f766e">
+      <div class="pillar-title">Data: What to Collect and How to Measure It</div>
+      <ul class="qs">
+        <li>What kind of data actually drives generalization, and which hidden biases in the data hold it back?</li>
+        <li>How should we evaluate policies and foundation models so that the evaluation tells us what data to collect next?</li>
+      </ul>
+      <details>
+        <summary><span class="show">Show</span><span class="hide">Hide</span> Work on Data</summary>
+        <div class="area"><div class="area-name">Bias-Aware Evaluation &amp; Data Collection</div><div class="area-papers"><a href="https://arxiv.org/abs/2607.21582" target="_blank" rel="noopener">Scale Up Strategically</a><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two</a></div></div>
+        <div class="area"><div class="area-name">Evaluating Embodied Foundation Models</div><div class="area-papers"><a href="https://arxiv.org/abs/2510.08759" target="_blank" rel="noopener">BEAR</a><a href="https://arxiv.org/abs/2610.27782" target="_blank" rel="noopener">RoboJudge</a><a href="https://arxiv.org/abs/2502.09621" target="_blank" rel="noopener">MME-CoT</a><a href="https://arxiv.org/abs/2510.26802" target="_blank" rel="noopener">MME-CoF</a><a href="https://arxiv.org/abs/2603.20194" target="_blank" rel="noopener">MME-CoF-Pro</a></div></div>
+      </details>
+      <div class="tags"><span>Data Collection</span><span>Bias-Aware Evaluation</span><span>Embodied Benchmarks</span></div>
+    </div>
+
+    <div class="pillar" style="--c:#4f46e5">
+      <div class="pillar-title">Using Data: Post-Training, Adaptation, and Skills</div>
+      <ul class="qs">
+        <li>How can we post-train pre-trained policies and world models (SFT, RL) so that a small amount of data goes a long way?</li>
+        <li>Which structures (equivariance, object-centric skills, action representations) let each demonstration generalize further?</li>
+      </ul>
+      <details>
+        <summary><span class="show">Show</span><span class="hide">Hide</span> Work on Using Data</summary>
+        <div class="area"><div class="area-name">Post-Training &amp; Policy Adaptation</div><div class="area-papers"><a href="https://arxiv.org/abs/2606.17906" target="_blank" rel="noopener">WAM-RL</a><a href="https://arxiv.org/abs/2511.07381" target="_blank" rel="noopener">EquiTac</a></div></div>
+        <div class="area"><div class="area-name">Skill Learning</div><div class="area-papers"><a href="https://arxiv.org/abs/2510.21121" target="_blank" rel="noopener">GSL</a><a href="https://arxiv.org/abs/2504.06961" target="_blank" rel="noopener">Two by Two</a><a href="https://arxiv.org/abs/2407.11298" target="_blank" rel="noopener">ThinkGrasp</a></div></div>
+        <div class="area"><div class="area-name">Structured Policy Representations</div><div class="area-papers"><a href="https://arxiv.org/abs/2505.21351" target="_blank" rel="noopener">EquAct</a><a href="https://arxiv.org/abs/2607.10706" target="_blank" rel="noopener">Action Map Policy</a><a href="https://arxiv.org/abs/2607.11167" target="_blank" rel="noopener">Pix2Act</a></div></div>
+      </details>
+      <div class="tags"><span>Post-Training</span><span>Policy Adaptation</span><span>Skill Learning</span></div>
+    </div>
   </section>
 
   <!-- ==================== NEWS ==================== -->
@@ -230,7 +268,7 @@
     <p class="legend">Full list on
       <a href="https://scholar.google.com/citations?user=UZSbtlsAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
 
-    <div class="pub">
+    <div class="pub hl">
       <a class="thumb" style="--g1:#b45309;--g2:#f59e0b" href="https://arxiv.org/abs/2610.27782" target="_blank" rel="noopener">
         <img src="assets/pubs/robojudge.gif" alt="" loading="lazy" onerror="this.remove()">
         <span class="tv">arXiv<br>2026</span>
