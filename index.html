@@ -93,6 +93,9 @@
   .threads li{margin:6px 0}
   .threads .rel{color:var(--muted); font-size:13px}
 
+  .overview{margin:12px 0 4px}
+  .overview img{width:100%; height:auto; display:block; border:1px solid var(--rule); border-radius:6px}
+  .overview figcaption{font-size:13px; color:var(--muted); margin-top:6px; text-align:center}
   /* ---------- Research pillars (Jiayuan Mao-style) ---------- */
   .pillar{margin:14px 0 0; padding:12px 16px 12px; border-left:4px solid var(--c); background:#fafafa; border-radius:0 6px 6px 0}
   .pillar-title{font-size:16px; font-weight:500; color:var(--c)}
@@ -212,6 +215,11 @@
     <p>My research focuses on <b>efficient scaling</b> of robot learning: what kind of data we need, and how to
       use it so that policies generalize better. This includes <b>post-training</b>, <b>policy adaptation</b>,
       and <b>skill learning</b>.</p>
+
+    <figure class="overview">
+      <a href="assets/research-overview.jpg" target="_blank" rel="noopener"><img src="assets/research-overview.jpg" alt="Research overview: a data loop for efficient scaling of robot learning. Evaluate with benchmarks and judges, diagnose gaps and biases, collect targeted data, and post-train the policy or world model. Left: work on what data to collect and how to measure it. Right: work on post-training, adaptation, and skills." loading="lazy"></a>
+      <figcaption>Two threads around one loop: measure what is missing, collect it, and post-train on it. <a href="assets/research-overview.jpg" target="_blank" rel="noopener">View full figure</a></figcaption>
+    </figure>
 
     <div class="pillar" style="--c:#0f766e">
       <div class="pillar-title">Data: What to Collect and How to Measure It</div>
